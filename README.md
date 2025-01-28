@@ -1,7 +1,6 @@
-# My Personal Project
-# Budget Manager
+# My Personal Project: The Budget Manager
 
-## Manage your finances your way!
+## User-friendly tool designed to help manage budget and finances!
 
 The goal of the project is to create a simple budget manager for students to 
 keep track of their finances. In the world we live in today, finances play a
@@ -15,9 +14,7 @@ I came up with Budget Manager. Through Budget Manager, students can keep track o
 expenses, and saving goals.  
 
 
-A *The Budget Manager* will allow the user to:
+*The Budget Manager* will allow the user to:
 - Add their **income, expenses and savings**
 - Set a **target** for their **savings** percent-wise
 - **Add/remove log entries** to keep track of all expenses
-
-An example of text with **bold** and *italic* fonts.  
