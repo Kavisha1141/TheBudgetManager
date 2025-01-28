@@ -14,7 +14,7 @@ I came up with Budget Manager. Through Budget Manager, students can keep track o
 expenses, and saving goals.  
 
 
-*The Budget Manager* will allow the user to:
-- Add their **income, expenses and savings**
-- Set a **target** for their **savings** percent-wise
-- **Add/remove log entries** to keep track of all expenses
+*The Budget Manager* User Stories:
+- I want to be able to add my **income, expenses and savings**
+- I want to be able to set a **target** for my **savings** percent-wise
+- I want to be able to view my money spend in total, my savings in total, and my income left
