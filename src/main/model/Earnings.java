@@ -7,7 +7,7 @@ public class Earnings {
     private int year;
     private String title;
 
-    // constructs an Earning of amount amt, date consisting of day,month,year and title
+    // constructs an Earning of amount amt, date consisting of day, month year and title
     public Earnings(){
 
     }
