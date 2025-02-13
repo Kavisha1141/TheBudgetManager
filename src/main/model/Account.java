@@ -28,6 +28,6 @@ public class Account {
     // returns the list of expenses
     public ArrayList<Expense> getListOfExpenses(){
         return null;
-    }
+    } 
 
 }
