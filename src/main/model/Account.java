@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Account {
 
+    // fields
     private int balance;
     private ArrayList<Earnings> listOfEarnings;
     private ArrayList<Expense> listOfExpenses;
