@@ -6,10 +6,11 @@ public class Account {
 
     // fields
     private int balance;
-    private ArrayList<Earnings> listOfEarnings;
-    private ArrayList<Expense> listOfExpenses;
+    private ArrayList<Transaction> listOfEarnings;
+    private ArrayList<Transaction> listOfExpenses;
 
-    // constructs an account with balance set to 0 and empty list of earnings and expenses
+    // constructs an account with balance set to 0 and empty list of earnings and
+    // expenses
     public Account() {
         balance = 0;
         listOfEarnings = new ArrayList<>();
@@ -22,13 +23,13 @@ public class Account {
     }
 
     // returns the list of earnings
-    public ArrayList<Earnings> getListOfEarnings() {
+    public ArrayList<Transaction> getListOfEarnings() {
         return null;
     }
 
     // returns the list of expenses
-    public ArrayList<Expense> getListOfExpenses() {
+    public ArrayList<Transaction> getListOfExpenses() {
         return null;
-    } 
+    }
 
 }

@@ -1,32 +1,33 @@
 package model;
 
-public class Earnings {
+public class Transaction {
     private int amount;
     private int month;
     private int day;
     private int year;
     private String title;
 
-    // constructs an Earning of amount amt, date consisting of day, month year and title
-    public Earnings(){
+    // constructs an Transaction of amount amt, date consisting of day, month year
+    // and title
+    public Transaction() {
 
     }
 
     // MODIFIES: this
     // EFFECTS: sets the amount to amt
-    public void setAmount(){
+    public void setAmount() {
 
     }
 
     // MODIFIES: this
     // EFFECTS: sets the date
-    public void setDate(int day, int month, int year){
+    public void setDate(int day, int month, int year) {
 
     }
 
     // MODIFIES: this
     // EFFECTS: sets the title
-    public void setTitle(String title){
+    public void setTitle(String title) {
 
     }
 
@@ -54,7 +55,5 @@ public class Earnings {
     public String getTitle() {
         return "";
     }
-
-
 
 }
