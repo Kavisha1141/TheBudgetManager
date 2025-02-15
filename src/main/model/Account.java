@@ -10,8 +10,8 @@ public class Account {
     private ArrayList<Transaction> listOfExpenses;
     private int savings;
 
-    // constructs an account with balance set to 0 and empty list of earnings and
-    // expenses
+    // constructs an account with balance set to 0 and empty list of earnings, savings and
+    // expenses in dollars
     public Account() {
         balance = 0;
         listOfEarnings = new ArrayList<>();
@@ -34,30 +34,46 @@ public class Account {
         return null;
     }
 
+    // returns the account savings
+    public int getSavings() {
+        return -1;
+    }
+
+    // returns total money earned in dollars
+    public int getTotalEarnings() {
+        return -1;
+    }
+
+    // returns total money spend in dollars
+    public int getTotalExpenses() {
+        return -1;
+    }
+
     // MODIFIES: this
-    // EFFECTS: adds an expense, withdraws amount from balance, and adds it to the list of Expenses
-    public void addExpense(){
+    // EFFECTS: adds an expense, withdraws amount from balance, and adds it to the
+    // list of Expenses
+    public void addExpense() {
 
     }
 
     // MODIFIES: this
-    // EFFECTS: adds an earning and adds it to the list of Earnings, adds amount to balance
-    public void addEarning(){
-        
+    // EFFECTS: adds an earning and adds it to the list of Earnings, adds amount to
+    // balance
+    public void addEarning() {
+
     }
 
     // REQUIRES: savings + amount <= target
     // MODIFIES: this
     // EFFECTS: adds amount to savings
-    public void saveAmount(){
-        
+    public void saveAmount() {
+
     }
 
     // MODIFIES: this
     // EFFECTS: sets a target for savings
-    public void setSavingTarget(){
-        
-    }
+    public void setSavingTarget() {
 
+    }
 
 }
