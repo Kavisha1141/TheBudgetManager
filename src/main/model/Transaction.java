@@ -32,12 +32,12 @@ public class Transaction {
         return year;
     }
 
-    // returns the amount for the Earning
+    // returns the amount for the transaction
     public int getAmount() {
         return amount;
     }
 
-    // returns the title for the Earning
+    // returns the title for the transaction
     public String getTitle() {
         return title;
     }
