@@ -67,7 +67,7 @@ public class BudgetManager {
         System.out.println("h: View total money spent");
         System.out.println("i: View total money earned");
         System.out.println("j: View total account report");
-        System.out.println("k: Logout and return to main menu");
+        System.out.println("k: Return to main menu");
         printDivider();
     }
 
@@ -118,6 +118,10 @@ public class BudgetManager {
             default:
                 System.out.println("Invalid option inputted. Please try again.");
                 printDivider();
+        }
+        if (isProgramRunning) {
+            printDivider();
+            handleMenu();
         }
     }
 
@@ -347,12 +351,12 @@ public class BudgetManager {
     // REQUIRES: currentAccount != null
     // EFFECTS: print a list of Transactions
     public void printList(ArrayList<Transaction> listToPrint) {
-        System.out.println("  AMOUNT ($)      DATE                 TITLE           ");
+        System.out.println("  AMOUNT ($)      DATE            TITLE           ");
         for (Transaction nextTransaction : listToPrint) {
             System.out.println(" " + nextTransaction.getAmount()
-                    + "        " + nextTransaction.getMonth()
+                    + "             " + nextTransaction.getMonth()
                     + "/" + nextTransaction.getDay() + "/"
-                    + nextTransaction.getYear() + "        "
+                    + nextTransaction.getYear() + "             "
                     + nextTransaction.getTitle() + "    ");
         }
     }
