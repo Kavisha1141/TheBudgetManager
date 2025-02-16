@@ -11,6 +11,7 @@ public class Account {
     private ArrayList<Transaction> listOfEarnings;
     private ArrayList<Transaction> listOfExpenses;
     private int savings;
+    private int savingsTarget;
 
     // constructs an account with name, balance and savings set to 0 and empty list
     // of earnings, and
@@ -20,6 +21,7 @@ public class Account {
         listOfEarnings = new ArrayList<>();
         listOfExpenses = new ArrayList<>();
         savings = 0;
+        savingsTarget = 0;
         this.name = name;
     }
 
@@ -45,6 +47,11 @@ public class Account {
 
     // returns the account savings
     public int getSavings() {
+        return -1;
+    }
+
+    // returns the account savings target
+    public int getSavingsTarget() {
         return -1;
     }
 
@@ -76,9 +83,9 @@ public class Account {
 
     }
 
-    // REQUIRES: savings + amount <= target; amount > 0
+    // REQUIRES: savings + amount <= target; amount > 0; balance - savings >= 0
     // MODIFIES: this
-    // EFFECTS: adds amount to savings
+    // EFFECTS: adds amount to savings; reduces balance by amount
     public void saveAmount(int amount) {
 
     }

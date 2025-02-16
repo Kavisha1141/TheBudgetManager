@@ -110,4 +110,17 @@ public class TestAccount {
         assertEquals(2019, testAccount.getListOfExpenses().get(1).getYear());
     }
 
+    @Test
+    void testSaveAmount() {
+        assertEquals(0, testAccount.getBalance());
+        testAccount.addEarning(110, 23, 3, 2024, "birthday gift from dad");
+        assertEquals(110, testAccount.getBalance());
+        testAccount.setSavingTarget(100);
+        assertEquals(100, testAccount.getSavingsTarget());
+
+        testAccount.saveAmount(55);
+        assertEquals(55, testAccount.getBalance());
+        assertEquals(55, testAccount.getSavings());
+    }
+
 }
