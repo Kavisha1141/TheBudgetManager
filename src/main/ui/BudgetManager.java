@@ -15,6 +15,7 @@ public class BudgetManager {
     private Scanner scanner;
 
     // main program
+    // SOURCE: I used the flashcard reviewer app to learn how implementing an UI works
     public BudgetManager() {
         initialize();
         System.out.println();
