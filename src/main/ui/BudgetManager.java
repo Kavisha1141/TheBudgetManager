@@ -15,7 +15,8 @@ public class BudgetManager {
     private Scanner scanner;
 
     // main program
-    // SOURCE: I used the flashcard reviewer app to learn how implementing an UI works
+    // SOURCE: I used the flashcard reviewer app to learn how implementing an UI
+    // works
     public BudgetManager() {
         initialize();
         System.out.println();
@@ -94,6 +95,8 @@ public class BudgetManager {
     }
 
     // EFFECTS: processes the user's input in the main menu
+    // SOURCE: I used the flashcard reviewer app to learn how implementing an UI
+    // works
     public void processMainMenuCommands(String input) {
         switch (input) {
             case "c":
@@ -180,6 +183,8 @@ public class BudgetManager {
 
     // REQUIRES: currentAccount != null
     // EFFECTS: processes the user's input in options about one account
+    // SOURCE: I used the flashcard reviewer app to learn how implementing an UI
+    // works
     public void processSubMenuCommands(String input) {
         switch (input) {
             case "a":
