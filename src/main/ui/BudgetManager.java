@@ -38,6 +38,7 @@ public class BudgetManager {
 
     // EFFECTS: displays menu for all accounts
     public void printMenuAllAccounts() {
+        printDivider();
         System.out.println("Please select an option:\n");
         System.out.println("c: Create new account");
         System.out.println("v: View an account");
@@ -48,6 +49,7 @@ public class BudgetManager {
 
     // EFFECTS: displays menu for an account selected
     public void printMenuOneAccount() {
+        printDivider();
         System.out.println("Please select an option:\n");
         System.out.println("a: View Account Details");
         System.out.println("b: Add an Earning");
@@ -60,6 +62,7 @@ public class BudgetManager {
 
     // EFFECTS: displays menu for an account selected for view options
     public void printMenuViewAccount() {
+        printDivider();
         System.out.println("Please select an option:\n");
         System.out.println("e: View Account Balance");
         System.out.println("f: View List of Earnings");
@@ -97,6 +100,7 @@ public class BudgetManager {
     // EFFECTS: processes the user's input in the main menu
     // SOURCE: I used the flashcard reviewer app to learn how implementing an UI
     // works
+    @SuppressWarnings("methodlength")
     public void processMainMenuCommands(String input) {
         switch (input) {
             case "c":
@@ -227,24 +231,31 @@ public class BudgetManager {
         switch (input) {
             case "e":
                 System.out.println("Account Balance: $" + currentAccount.getBalance());
+                printDivider();
                 break;
             case "f":
                 printListOfEarnings();
+                printDivider();
                 break;
             case "g":
                 printListOfExpenses();
+                printDivider();
                 break;
             case "h":
                 System.out.println("Total amount spent: $" + currentAccount.getTotalExpenses());
+                printDivider();
                 break;
             case "i":
                 System.out.println("Total amount earned: $" + currentAccount.getTotalEarnings());
+                printDivider();
                 break;
             case "j":
                 printActivityReport();
+                printDivider();
                 break;
             case "k":
                 handleSubMenu();
+                printDivider();
                 break;
             default:
                 System.out.println("Invalid option inputted. Please try again.");
@@ -355,12 +366,12 @@ public class BudgetManager {
     // REQUIRES: currentAccount != null
     // EFFECTS: print a list of Transactions
     public void printList(ArrayList<Transaction> listToPrint) {
-        System.out.println("  AMOUNT ($)      DATE            TITLE           ");
+        System.out.println("AMOUNT ($)   DATE       TITLE");
         for (Transaction nextTransaction : listToPrint) {
             System.out.println(" " + nextTransaction.getAmount()
-                    + "             " + nextTransaction.getMonth()
+                    + "         " + nextTransaction.getMonth()
                     + "/" + nextTransaction.getDay() + "/"
-                    + nextTransaction.getYear() + "             "
+                    + nextTransaction.getYear() + "      "
                     + nextTransaction.getTitle() + "    ");
         }
     }
