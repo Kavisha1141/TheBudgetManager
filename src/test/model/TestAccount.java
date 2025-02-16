@@ -123,4 +123,17 @@ public class TestAccount {
         assertEquals(55, testAccount.getSavings());
     }
 
+    @Test
+    void testTotalExpenses() {
+        assertEquals(0, testAccount.getBalance());
+        testAccount.addEarning(100, 23, 3, 2024, "birthday gift from dad");
+        testAccount.addEarning(60, 3, 3, 2021, "gift");
+        assertEquals(160, testAccount.getBalance());
+        testAccount.addExpense(60, 3, 3, 2021, "paid for car gas");
+        testAccount.addExpense(10, 3, 3, 2021, "bought hand cream");
+
+        assertEquals(160, testAccount.getTotalEarnings());
+        assertEquals(70, testAccount.getTotalExpenses());
+    }
+
 }
