@@ -16,5 +16,6 @@ expenses, and saving goals.
 
 *The Budget Manager* User Stories:
 - I want to be able to add my **income, expenses and savings**
-- I want to be able to set a **target** for my **savings** percent-wise
+- I want to be able to set a **target amount** for my **savings** 
 - I want to be able to view my money spend in total, my savings in total, and my income left
+- I want to be able to print a user report of all expenses, earnings, savings and balance

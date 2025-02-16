@@ -7,9 +7,9 @@ public class Transaction {
     private int year;
     private String title;
 
-    // constructs an Transaction of amount amt, date consisting of day, month year
+    // constructs a Transaction of amount amt, date consisting of day, month year
     // and title
-    public Transaction() {
+    public Transaction(int amt, int day, int month, int year, String title) {
 
     }
 
