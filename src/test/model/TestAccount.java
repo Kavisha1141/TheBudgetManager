@@ -12,7 +12,7 @@ public class TestAccount {
 
     @BeforeEach
     void runBefore() {
-        testAccount = new Account("Kavisha");
+        testAccount = new Account("Kavisha", "123456");
     }
 
     @Test
@@ -20,6 +20,7 @@ public class TestAccount {
         assertEquals("Kavisha", testAccount.getName());
         assertEquals(0, testAccount.getBalance());
         assertEquals(0, testAccount.getSavings());
+        assertEquals("123456", testAccount.getPassword());
         assertTrue(testAccount.getListOfEarnings().isEmpty());
         assertTrue(testAccount.getListOfExpenses().isEmpty());
     }

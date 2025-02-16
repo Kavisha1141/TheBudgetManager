@@ -7,6 +7,7 @@ public class Account {
 
     // fields
     private String name;
+    private String password;
     private int balance;
     private ArrayList<Transaction> listOfEarnings;
     private ArrayList<Transaction> listOfExpenses;
@@ -16,13 +17,18 @@ public class Account {
     // constructs an account with name, balance and savings set to 0 and empty list
     // of earnings, and
     // expenses in dollars
-    public Account(String name) {
+    public Account(String name, String password) {
         balance = 0;
         listOfEarnings = new ArrayList<>();
         listOfExpenses = new ArrayList<>();
+        this.password = password;
         savings = 0;
         savingsTarget = 0;
         this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     // returns the account balance
