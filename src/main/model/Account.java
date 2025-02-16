@@ -27,42 +27,51 @@ public class Account {
 
     // returns the account balance
     public int getBalance() {
-        return -1;
+        return balance;
     }
 
     // returns the account name
     public String getName() {
-        return "";
+        return name;
     }
 
     // returns the list of earnings
     public ArrayList<Transaction> getListOfEarnings() {
-        return null;
+        return listOfEarnings;
     }
 
     // returns the list of expenses
     public ArrayList<Transaction> getListOfExpenses() {
-        return null;
+        return listOfExpenses;
     }
 
     // returns the account savings
     public int getSavings() {
-        return -1;
+        return savings;
     }
 
     // returns the account savings target
     public int getSavingsTarget() {
-        return -1;
+        return savingsTarget;
     }
 
     // returns total money earned in dollars
     public int getTotalEarnings() {
-        return -1;
+        int totalEarnings = 0;
+        for (Transaction nextEarning: listOfEarnings) {
+            totalEarnings += nextEarning.getAmount();
+        }
+        return totalEarnings;
+
     }
 
     // returns total money spend in dollars
     public int getTotalExpenses() {
-        return -1;
+        int totalExpenses = 0;
+        for (Transaction nextExpense: listOfExpenses) {
+            totalExpenses += nextExpense.getAmount();
+        }
+        return totalExpenses;
     }
 
     // REQURIES: balance - amount >= 0; day <= 31; month <= 12; year <= current year; amount > 0
@@ -71,7 +80,9 @@ public class Account {
     // balance, and adds it to the
     // list of Expenses
     public void addExpense(int amount, int day, int month, int year, String title) {
-
+        Transaction newExpense = new Transaction(amount, day, month, year, title);
+        listOfExpenses.add(newExpense);
+        balance -= amount;
     }
 
     // REQUIRES: day <= 31; month <= 12; year <= current year; day/month/year less; amount > 0
@@ -80,21 +91,24 @@ public class Account {
     // EFFECTS: adds an earning and adds it to the list of Earnings, adds amount to
     // balance
     public void addEarning(int amount, int day, int month, int year, String title) {
-
+        Transaction newEarning = new Transaction(amount, day, month, year, title);
+        listOfEarnings.add(newEarning);
+        balance += amount;
     }
 
     // REQUIRES: savings + amount <= target; amount > 0; balance - savings >= 0
     // MODIFIES: this
     // EFFECTS: adds amount to savings; reduces balance by amount
     public void saveAmount(int amount) {
-
+        savings += amount;
+        balance -= amount;
     }
 
     // REQUIRES: amount > 0
     // MODIFIES: this
     // EFFECTS: sets a target for savings
     public void setSavingTarget(int amount) {
-
+        savingsTarget = amount;
     }
 
 }

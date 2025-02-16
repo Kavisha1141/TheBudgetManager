@@ -10,50 +10,36 @@ public class Transaction {
     // constructs a Transaction of amount amt, date consisting of day, month year
     // and title
     public Transaction(int amt, int day, int month, int year, String title) {
-
-    }
-
-    // MODIFIES: this
-    // EFFECTS: sets the amount to amt
-    public void setAmount() {
-
-    }
-
-    // MODIFIES: this
-    // EFFECTS: sets the date
-    public void setDate(int day, int month, int year) {
-
-    }
-
-    // MODIFIES: this
-    // EFFECTS: sets the title
-    public void setTitle(String title) {
-
+        this.amount = amt;
+        this.day = day;
+        this.month = month;
+        this.year = year;
+        this.title = title;
     }
 
     // returns the day
     public int getDay() {
-        return -1;
+        return day;
     }
 
     // returns the month
     public int getMonth() {
-        return -1;
+        return month;
     }
 
     // returns the year
     public int getYear() {
-        return -1;
+        return year;
     }
 
     // returns the amount for the Earning
     public int getAmount() {
-        return -1;
+        return amount;
     }
 
     // returns the title for the Earning
     public String getTitle() {
-        return "";
+        return title;
     }
 
 }
