@@ -46,8 +46,8 @@ public class BudgetManager {
     public void printMenuOneAccount() {
         System.out.println("Please select an option:\n");
         System.out.println("a: View Account Balance");
-        System.out.println("b: Add an Expense");
-        System.out.println("c: Add an Earning");
+        System.out.println("b: Add an Earning");
+        System.out.println("c: Add an Expense");
         System.out.println("d: Set a saving target");
         System.out.println("e: Add savings");
         System.out.println("f: View List of Earnings");
@@ -114,34 +114,34 @@ public class BudgetManager {
     // accounts
     public void openAccount() {
         if (!listOfAccounts.isEmpty()) {
-        System.out.println("Please enter Account name:");
-        String name = this.scanner.nextLine();
+            System.out.println("Please enter Account name:");
+            String name = this.scanner.nextLine();
 
-        System.out.println("Please enter Account password:");
-        String password = this.scanner.nextLine();
+            System.out.println("Please enter Account password:");
+            String password = this.scanner.nextLine();
 
-        for (Account account : listOfAccounts) {
-            if (account.getName() == name && account.getPassword() == password) {
-                currentAccount = account;
-                handleSubMenu();
-                break;
+            for (Account account : listOfAccounts) {
+                if (account.getName().equals(name) & account.getPassword().equals(password)) {
+                    currentAccount = account;
+                    handleSubMenu();
+                    break;
+                }
             }
+            System.out.println("Username or password incorrect!");
+        } else {
+            System.out.println("No account created yet!");
         }
-        System.out.println("Username or password incorrect!");
-    }
-    else {
-        System.out.println("No account created yet!");
-    }
     }
 
     // EFFECTS: prints all account names
     public void viewAllAccounts() {
+
         if (!listOfAccounts.isEmpty()) {
+            System.out.println("Account names: ");
             for (Account account : listOfAccounts) {
                 System.out.println(account.getName());
             }
-        } 
-        else {
+        } else {
             System.out.println("No accounts created yet!");
         }
     }
@@ -168,7 +168,7 @@ public class BudgetManager {
     public void processSubMenuCommands(String input) {
         switch (input) {
             case "a":
-                System.out.println("Account Balance: " + currentAccount.getBalance());
+                System.out.println("Account Balance: $" + currentAccount.getBalance());
                 printDivider();
                 handleSubMenu();
                 break;
@@ -193,42 +193,54 @@ public class BudgetManager {
                 handleSubMenu();
                 break;
             case "f":
-                System.out.println("List of Earnings:");
-                printList(currentAccount.getListOfEarnings());
-                printDivider();
-                handleSubMenu();
-                break;
+                if (!currentAccount.getListOfEarnings().isEmpty()) {
+                    System.out.println("List of Earnings:");
+                    printList(currentAccount.getListOfEarnings());
+                    printDivider();
+                    handleSubMenu();
+                    break;
+                } else {
+                    System.out.println("No earnings recorded yet!");
+                }
             case "g":
-                System.out.println("List of Expenses:");
-                printList(currentAccount.getListOfExpenses());
-                printDivider();
-                handleSubMenu();
-                break;
+                if (!currentAccount.getListOfEarnings().isEmpty()) {
+                    System.out.println("List of Expenses:");
+                    printList(currentAccount.getListOfExpenses());
+                    printDivider();
+                    handleSubMenu();
+                    break;
+                } else {
+                    System.out.println("No expenses recorded yet!");
+                }
             case "h":
-                System.out.println("Total amount spent: $"+ currentAccount.getTotalExpenses());
+                System.out.println("Total amount spent: $" + currentAccount.getTotalExpenses());
                 printDivider();
                 handleSubMenu();
                 break;
             case "i":
-                System.out.println("Total amount spent: $"+ currentAccount.getTotalEarnings());
+                System.out.println("Total amount earned: $" + currentAccount.getTotalEarnings());
                 printDivider();
                 handleSubMenu();
                 break;
+
             case "j":
                 System.out.println("ACCOUNT ACTIVITY REPORT");
                 printDivider();
-                System.out.println("Current Balance: "+ currentAccount.getBalance());
-                System.out.println("Total amount spent: $"+ currentAccount.getTotalExpenses());
-                System.out.println("Total amount spent: $"+ currentAccount.getTotalEarnings());
-                System.out.println("Total savings: "+ currentAccount.getSavings());
-                System.out.println("Savings target: " + currentAccount.getSavingsTarget());
-                printDivider(); 
+                System.out.println("Current Balance: $" + currentAccount.getBalance());
+                System.out.println("Total amount spent: $" + currentAccount.getTotalExpenses());
+                System.out.println("Total amount earned: $" + currentAccount.getTotalEarnings());
+                System.out.println("Total savings: $" + currentAccount.getSavings());
+                System.out.println("Savings target: $" + currentAccount.getSavingsTarget());
+                printDivider();
                 System.out.println("List of Earnings:");
                 printList(currentAccount.getListOfEarnings());
                 printDivider();
                 System.out.println("List of Expenses:");
                 printList(currentAccount.getListOfExpenses());
                 printDivider();
+                handleSubMenu();
+                break;
+
             case "k":
                 System.out.println("Successfully logged out!");
                 handleMenu();
@@ -237,17 +249,19 @@ public class BudgetManager {
             default:
                 System.out.println("Invalid option inputted. Please try again.");
                 printDivider();
+                handleSubMenu();
         }
     }
 
     // EFFECTS: get int input from user
     public int getInput() {
         int input = this.scanner.nextInt();
+        this.scanner.nextLine();
         return input;
     }
 
     // EFFECTS: add expense to the current account
-    public void addExpense() {       
+    public void addExpense() {
         System.out.println("Enter amount of expense: ");
         int amount = getInput();
         System.out.println("Enter day expense was made: ");
@@ -262,7 +276,7 @@ public class BudgetManager {
     }
 
     // EFFECTS: add earning to the current account
-    public void addEarning() {       
+    public void addEarning() {
         System.out.println("Enter amount of earning: ");
         int amount = getInput();
         System.out.println("Enter day earning was made: ");
@@ -272,39 +286,38 @@ public class BudgetManager {
         System.out.println("Enter the year earning was made: ");
         int year = getInput();
         System.out.println("Enter the earning title: ");
-        String title = this.scanner.nextLine();
+        String title = scanner.nextLine();
         currentAccount.addEarning(amount, day, month, year, title);
     }
 
     // EFFECTS: save amount from balance
-    public void saveAmount() {       
+    public void saveAmount() {
         if (currentAccount.getSavingsTarget() != 0) {
-        System.out.println("Enter amount to save from total balance: ");
-        int amount = getInput();
-        currentAccount.saveAmount(amount);
-        }
-        else {
+            System.out.println("Enter amount to save from total balance: ");
+            int amount = getInput();
+            currentAccount.saveAmount(amount);
+        } else {
             System.out.println("Please set a savings target first.");
         }
     }
 
     // EFFECTS: set a saving target
-    public void setTarget() {   
+    public void setTarget() {
         System.out.println("Enter target amount to save: ");
         int amount = getInput();
         currentAccount.setSavingTarget(amount);
+        System.out.println("Target set to $" + amount);
     }
 
-
     // EFFECTS: print a list of Transactions
-    public void printList( ArrayList<Transaction> listToPrint) {
-        System.out.println("|  AMOUNT    DATE           TITLE      |");
-        for (Transaction nextTransaction: listToPrint) {        
-            System.out.println("|    " + nextTransaction.getAmount() + 
-            "       "+ nextTransaction.getMonth()
-            + "/" + nextTransaction.getDay() + "/"
-            + nextTransaction.getYear() + "       " 
-            + nextTransaction.getTitle() + "    |");
+    public void printList(ArrayList<Transaction> listToPrint) {
+        System.out.println("  AMOUNT ($)      DATE                 TITLE           ");
+        for (Transaction nextTransaction : listToPrint) {
+            System.out.println(" " + nextTransaction.getAmount() +
+                    "   " + nextTransaction.getMonth()
+                    + "/" + nextTransaction.getDay() + "/"
+                    + nextTransaction.getYear() + "   "
+                    + nextTransaction.getTitle() + "    |");
         }
     }
 
