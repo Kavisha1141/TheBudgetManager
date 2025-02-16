@@ -289,15 +289,19 @@ public class BudgetManager {
     public void addExpense() {
         System.out.println("Enter amount of expense: ");
         int amount = getInput();
-        System.out.println("Enter day expense was made: ");
-        int day = getInput();
-        System.out.println("Enter the month expense was made: ");
-        int month = getInput();
-        System.out.println("Enter the year expense was made: ");
-        int year = getInput();
-        System.out.println("Enter the expense title: ");
-        String title = this.scanner.nextLine();
-        currentAccount.addExpense(amount, day, month, year, title);
+        if (currentAccount.getBalance() - amount >= 0) {
+            System.out.println("Enter day expense was made: ");
+            int day = getInput();
+            System.out.println("Enter the month expense was made: ");
+            int month = getInput();
+            System.out.println("Enter the year expense was made: ");
+            int year = getInput();
+            System.out.println("Enter the expense title: ");
+            String title = this.scanner.nextLine();
+            currentAccount.addExpense(amount, day, month, year, title);
+        } else {
+            System.out.println("Not enough balance!");
+        }
     }
 
     // REQUIRES: currentAccount != null
