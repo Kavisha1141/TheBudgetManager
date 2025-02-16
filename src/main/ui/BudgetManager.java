@@ -1,6 +1,8 @@
 package ui;
 
 import model.Account;
+import model.Transaction;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,6 +17,9 @@ public class BudgetManager {
     public BudgetManager() {
         initialize();
         System.out.println("Welcome to the Budget Manager!");
+        while (this.isProgramRunning) {
+            handleMenu();
+        }
     }
 
     public void initialize() {
@@ -45,6 +50,7 @@ public class BudgetManager {
         System.out.println("h: View total money spent");
         System.out.println("i: View total money earned");
         System.out.println("j: View total account report");
+        System.out.println("k: Logout and return to main menu");
     }
 
     // handle main menu
@@ -86,6 +92,7 @@ public class BudgetManager {
 
         Account newAccount = new Account(name, password);
         listOfAccounts.add(newAccount);
+        handleSubMenu();
     }
 
     // REQUIRES: listOfAccounts.size() > 0
@@ -124,6 +131,8 @@ public class BudgetManager {
     // MODIFIES: this
     // EFFECTS: quit application
     public void quitApplication() {
+        System.out.println("Thanks for using the Budget Manager!");
+        System.out.println("Have a good day!");
         this.isProgramRunning = false;
     }
 
@@ -136,40 +145,71 @@ public class BudgetManager {
 
     }
 
+    // REQUIRES: currentAccount != null
     // EFFECTS: processes the user's input in options about one account
     public void processSubMenuCommands(String input) {
         switch (input) {
             case "a":
                 System.out.println("Account Balance: " + currentAccount.getBalance());
+                printDivider();
                 break;
             case "b":
                 addEarning();
+                printDivider();
                 break;
             case "c":
                 addExpense();
+                printDivider();
                 break;
             case "d":
-                quitApplication();
+                setTarget();
+                printDivider();
                 break;
             case "e":
-                quitApplication();
+                saveAmount();
+                printDivider();
                 break;
             case "f":
-                quitApplication();
+                System.out.println("List of Earnings:");
+                printList(currentAccount.getListOfEarnings());
+                printDivider();
                 break;
             case "g":
-                createAccount();
+                System.out.println("List of Expenses:");
+                printList(currentAccount.getListOfExpenses());
+                printDivider();
                 break;
             case "h":
-                openAccount();
+                System.out.println("Total amount spent: $"+ currentAccount.getTotalExpenses());
+                printDivider();
                 break;
             case "i":
-                viewAllAccounts();
+                System.out.println("Total amount spent: $"+ currentAccount.getTotalEarnings());
+                printDivider();
                 break;
             case "j":
-                quitApplication();
+                System.out.println("ACCOUNT ACTIVITY REPORT");
+                printDivider();
+                System.out.println("Current Balance: "+ currentAccount.getBalance());
+                System.out.println("Total amount spent: $"+ currentAccount.getTotalExpenses());
+                System.out.println("Total amount spent: $"+ currentAccount.getTotalEarnings());
+                System.out.println("Total savings: "+ currentAccount.getSavings());
+                System.out.println("Savings target: " + currentAccount.getSavingsTarget());
+                printDivider(); 
+                System.out.println("List of Earnings:");
+                printList(currentAccount.getListOfEarnings());
+                printDivider();
+                System.out.println("List of Expenses:");
+                printList(currentAccount.getListOfExpenses());
+                printDivider();
+            case "k":
+                System.out.println("Successfully logged out!");
+                handleMenu();
+                break;
+
             default:
                 System.out.println("Invalid option inputted. Please try again.");
+                printDivider();
         }
     }
 
@@ -209,19 +249,41 @@ public class BudgetManager {
         currentAccount.addEarning(amount, day, month, year, title);
     }
 
-    // EFFECTS: add earning to the current account
+    // EFFECTS: save amount from balance
     public void saveAmount() {       
-        System.out.println("Enter amount of earning: ");
+        if (currentAccount.getSavingsTarget() != 0) {
+        System.out.println("Enter amount to save from total balance: ");
         int amount = getInput();
-        System.out.println("Enter day earning was made: ");
-        int day = getInput();
-        System.out.println("Enter the month earning was made: ");
-        int month = getInput();
-        System.out.println("Enter the year earning was made: ");
-        int year = getInput();
-        System.out.println("Enter the earning title: ");
-        String title = this.scanner.nextLine();
-        currentAccount.addEarning(amount, day, month, year, title);
+        currentAccount.saveAmount(amount);
+        }
+        else {
+            System.out.println("Please set a savings target first.");
+        }
+    }
+
+    // EFFECTS: set a saving target
+    public void setTarget() {   
+        System.out.println("Enter target amount to save: ");
+        int amount = getInput();
+        currentAccount.setSavingTarget(amount);
+    }
+
+
+    // EFFECTS: print a list of Transactions
+    public void printList( ArrayList<Transaction> listToPrint) {
+        System.out.println("|       AMOUNT         DATE           TITLE      |");
+        for (Transaction nextTransaction: listToPrint) {        
+            System.out.println("|    " + nextTransaction.getAmount() + 
+            "       "+ nextTransaction.getMonth()
+            + "/" + nextTransaction.getDay() + "/"
+            + nextTransaction.getYear() + "       " 
+            + nextTransaction.getTitle() + "    |");
+        }
+    }
+
+    // EFFECTS: prints divider
+    public void printDivider() {
+        System.out.println(" |--------------------------------------------------|");
     }
 
 }
