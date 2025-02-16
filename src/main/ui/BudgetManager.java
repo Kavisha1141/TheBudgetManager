@@ -16,9 +16,12 @@ public class BudgetManager {
 
     public BudgetManager() {
         initialize();
+        System.out.println();
         System.out.println("Welcome to the Budget Manager!");
+        printDivider();
         while (this.isProgramRunning) {
             handleMenu();
+            printDivider();
         }
     }
 
@@ -35,6 +38,8 @@ public class BudgetManager {
         System.out.println("c: Create new account");
         System.out.println("v: View an account");
         System.out.println("w: View all accounts");
+        System.out.println("q: Quit application");
+        printDivider();
     }
 
     // displays menu for an account selected
@@ -51,6 +56,7 @@ public class BudgetManager {
         System.out.println("i: View total money earned");
         System.out.println("j: View total account report");
         System.out.println("k: Logout and return to main menu");
+        printDivider();
     }
 
     // handle main menu
@@ -63,20 +69,25 @@ public class BudgetManager {
     // EFFECTS: processes the user's input in the main menu
     public void processMainMenuCommands(String input) {
         switch (input) {
-            case "a":
+            case "c":
                 createAccount();
+                printDivider();
                 break;
             case "v":
                 openAccount();
+                printDivider();
                 break;
-            case "r":
+            case "w":
                 viewAllAccounts();
+                printDivider();
                 break;
             case "q":
                 quitApplication();
+                printDivider();
                 break;
             default:
                 System.out.println("Invalid option inputted. Please try again.");
+                printDivider();
         }
     }
 
@@ -92,6 +103,8 @@ public class BudgetManager {
 
         Account newAccount = new Account(name, password);
         listOfAccounts.add(newAccount);
+        currentAccount = newAccount;
+        System.out.println("Account successfully created! \n");
         handleSubMenu();
     }
 
@@ -100,6 +113,7 @@ public class BudgetManager {
     // EFFECTS: creates a new account with username and password; adds it to list of
     // accounts
     public void openAccount() {
+        if (!listOfAccounts.isEmpty()) {
         System.out.println("Please enter Account name:");
         String name = this.scanner.nextLine();
 
@@ -114,6 +128,10 @@ public class BudgetManager {
             }
         }
         System.out.println("Username or password incorrect!");
+    }
+    else {
+        System.out.println("No account created yet!");
+    }
     }
 
     // EFFECTS: prints all account names
@@ -152,40 +170,49 @@ public class BudgetManager {
             case "a":
                 System.out.println("Account Balance: " + currentAccount.getBalance());
                 printDivider();
+                handleSubMenu();
                 break;
             case "b":
                 addEarning();
                 printDivider();
+                handleSubMenu();
                 break;
             case "c":
                 addExpense();
                 printDivider();
+                handleSubMenu();
                 break;
             case "d":
                 setTarget();
                 printDivider();
+                handleSubMenu();
                 break;
             case "e":
                 saveAmount();
                 printDivider();
+                handleSubMenu();
                 break;
             case "f":
                 System.out.println("List of Earnings:");
                 printList(currentAccount.getListOfEarnings());
                 printDivider();
+                handleSubMenu();
                 break;
             case "g":
                 System.out.println("List of Expenses:");
                 printList(currentAccount.getListOfExpenses());
                 printDivider();
+                handleSubMenu();
                 break;
             case "h":
                 System.out.println("Total amount spent: $"+ currentAccount.getTotalExpenses());
                 printDivider();
+                handleSubMenu();
                 break;
             case "i":
                 System.out.println("Total amount spent: $"+ currentAccount.getTotalEarnings());
                 printDivider();
+                handleSubMenu();
                 break;
             case "j":
                 System.out.println("ACCOUNT ACTIVITY REPORT");
@@ -271,7 +298,7 @@ public class BudgetManager {
 
     // EFFECTS: print a list of Transactions
     public void printList( ArrayList<Transaction> listToPrint) {
-        System.out.println("|       AMOUNT         DATE           TITLE      |");
+        System.out.println("|  AMOUNT    DATE           TITLE      |");
         for (Transaction nextTransaction: listToPrint) {        
             System.out.println("|    " + nextTransaction.getAmount() + 
             "       "+ nextTransaction.getMonth()
@@ -283,7 +310,8 @@ public class BudgetManager {
 
     // EFFECTS: prints divider
     public void printDivider() {
-        System.out.println(" |--------------------------------------------------|");
+        System.out.println(" --------------------------------------------------");
+        System.out.println();
     }
 
 }
