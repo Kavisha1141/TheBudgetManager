@@ -64,7 +64,7 @@ public class Account {
     // returns total money earned in dollars
     public int getTotalEarnings() {
         int totalEarnings = 0;
-        for (Transaction nextEarning: listOfEarnings) {
+        for (Transaction nextEarning : listOfEarnings) {
             totalEarnings += nextEarning.getAmount();
         }
         return totalEarnings;
@@ -74,13 +74,14 @@ public class Account {
     // returns total money spend in dollars
     public int getTotalExpenses() {
         int totalExpenses = 0;
-        for (Transaction nextExpense: listOfExpenses) {
+        for (Transaction nextExpense : listOfExpenses) {
             totalExpenses += nextExpense.getAmount();
         }
         return totalExpenses;
     }
 
-    // REQURIES: balance - amount >= 0; day <= 31; month <= 12; year <= current year; amount > 0
+    // REQURIES: balance - amount >= 0; day <= 31; month <= 12; year <= current
+    // year; amount > 0
     // MODIFIES: this
     // EFFECTS: adds an expense transaction with given info, withdraws amount from
     // balance, and adds it to the
@@ -91,7 +92,8 @@ public class Account {
         balance -= amount;
     }
 
-    // REQUIRES: day <= 31; month <= 12; year <= current year; day/month/year less; amount > 0
+    // REQUIRES: day <= 31; month <= 12; year <= current year; day/month/year less;
+    // amount > 0
     // than or equal to current date
     // MODIFIES: this
     // EFFECTS: adds an earning and adds it to the list of Earnings, adds amount to

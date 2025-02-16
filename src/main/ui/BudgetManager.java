@@ -14,6 +14,7 @@ public class BudgetManager {
     private boolean isProgramRunning;
     private Scanner scanner;
 
+    // main program
     public BudgetManager() {
         initialize();
         System.out.println();
@@ -25,6 +26,7 @@ public class BudgetManager {
         }
     }
 
+    // initializes the app
     public void initialize() {
         listOfAccounts = new ArrayList<>();
         isProgramRunning = true;
@@ -32,7 +34,7 @@ public class BudgetManager {
         scanner = new Scanner(System.in);
     }
 
-    // displays menu for all accounts
+    // EFFECTS: displays menu for all accounts
     public void printMenuAllAccounts() {
         System.out.println("Please select an option:\n");
         System.out.println("c: Create new account");
@@ -42,7 +44,7 @@ public class BudgetManager {
         printDivider();
     }
 
-    // displays menu for an account selected
+    // EFFECTS: displays menu for an account selected
     public void printMenuOneAccount() {
         System.out.println("Please select an option:\n");
         System.out.println("a: View Account Details");
@@ -54,7 +56,7 @@ public class BudgetManager {
         printDivider();
     }
 
-    // displays menu for an account selected for view options
+    // EFFECTS: displays menu for an account selected for view options
     public void printMenuViewAccount() {
         System.out.println("Please select an option:\n");
         System.out.println("e: View Account Balance");
