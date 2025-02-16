@@ -185,20 +185,27 @@ public class BudgetManager {
     // EFFECTS: processes the user's input in options about one account
     // SOURCE: I used the flashcard reviewer app to learn how implementing an UI
     // works
+    @SuppressWarnings("methodlength")
     public void processSubMenuCommands(String input) {
         switch (input) {
             case "a":
                 handleViewMenu();
+                break;
             case "b":
                 addEarning();
+                break;
             case "c":
                 addExpense();
+                break;
             case "d":
                 setTarget();
+                break;
             case "e":
                 saveAmount();
+                break;
             case "f":
                 System.out.println("Successfully logged out!");
+                currentAccount = null;
                 handleMenu();
                 break;
             default:
@@ -210,20 +217,28 @@ public class BudgetManager {
         }
     }
 
+    @SuppressWarnings("methodlength")
+    // processes view details options
     public void processViewMenuCommands(String input) {
         switch (input) {
-            case "a":
+            case "e":
                 System.out.println("Account Balance: $" + currentAccount.getBalance());
+                break;
             case "f":
-                printListOfExpenses();
-            case "g":
                 printListOfEarnings();
+                break;
+            case "g":
+                printListOfExpenses();
+                break;
             case "h":
                 System.out.println("Total amount spent: $" + currentAccount.getTotalExpenses());
+                break;
             case "i":
                 System.out.println("Total amount earned: $" + currentAccount.getTotalEarnings());
+                break;
             case "j":
                 printActivityReport();
+                break;
             case "k":
                 handleSubMenu();
                 break;
@@ -302,12 +317,20 @@ public class BudgetManager {
     // MODIFIES: Account
     // EFFECTS: save amount from balance
     public void saveAmount() {
-        if (currentAccount.getSavingsTarget() != 0) {
-            System.out.println("Enter amount to save from total balance: ");
-            int amount = getInput();
-            currentAccount.saveAmount(amount);
+        if (currentAccount.getBalance() > 0) {
+            if (currentAccount.getSavingsTarget() != 0) {
+                System.out.println("Enter amount to save from total balance: ");
+                int amount = getInput();
+                if (currentAccount.getBalance() - amount >= 0) {
+                    currentAccount.saveAmount(amount);
+                } else {
+                    System.out.println("Not enough balance! Please add an earning first. ");
+                }
+            } else {
+                System.out.println("Please set a savings target first.");
+            }
         } else {
-            System.out.println("Please set a savings target first.");
+            System.out.println("Unable to save money since account balance is $0.");
         }
     }
 
@@ -327,10 +350,10 @@ public class BudgetManager {
         System.out.println("  AMOUNT ($)      DATE                 TITLE           ");
         for (Transaction nextTransaction : listToPrint) {
             System.out.println(" " + nextTransaction.getAmount()
-                    + "   " + nextTransaction.getMonth()
+                    + "        " + nextTransaction.getMonth()
                     + "/" + nextTransaction.getDay() + "/"
-                    + nextTransaction.getYear() + "   "
-                    + nextTransaction.getTitle() + "    |");
+                    + nextTransaction.getYear() + "        "
+                    + nextTransaction.getTitle() + "    ");
         }
     }
 
