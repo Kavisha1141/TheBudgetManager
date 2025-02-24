@@ -127,27 +127,29 @@ public class Account implements Writable{
     //Code source: JsonSerializationDemo file: https://github.com/stleary/JSON-java
     @Override
     public JSONObject toJson() {
-        JSONObject json = new JSONObject();
-        json.put("Account name", name);
-        json.put("Account password", password);
-        json.put("Balance", balance);
-        json.put("List of Earnings", listToJson(listOfEarnings));
-        json.put("List of Expenses", listToJson(listOfExpenses));
-        json.put("Savings target", savingsTarget);
-        json.put("Amound saved", savings);
-        return json;
+        // JSONObject json = new JSONObject();
+        // json.put("Account name", name);
+        // json.put("Account password", password);
+        // json.put("Balance", balance);
+        // json.put("List of Earnings", listToJson(listOfEarnings));
+        // json.put("List of Expenses", listToJson(listOfExpenses));
+        // json.put("Savings target", savingsTarget);
+        // json.put("Amound saved", savings);
+        // return json;
+        return null;
     }
 
     // EFFECTS: returns this account as a JSON array
     // Code source: JsonSerializationDemo file: https://github.com/stleary/JSON-java
     private JSONArray listToJson(ArrayList<Transaction> list) {
-        JSONArray jsonArray = new JSONArray();
+        // JSONArray jsonArray = new JSONArray();
 
-        for (Transaction t : list) {
-            jsonArray.put(t.toJson());
-        }
+        // for (Transaction t : list) {
+        //     jsonArray.put(t.toJson());
+        // }
 
-        return jsonArray;
+        // return jsonArray;
+        return null;
     }
 
 }
