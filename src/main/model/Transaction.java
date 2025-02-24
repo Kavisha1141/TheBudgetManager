@@ -1,6 +1,10 @@
 package model;
 
-public class Transaction {
+import org.json.JSONObject;
+
+import persistence.Writable;
+// constructs a Transaction with amt, date and title
+public class Transaction implements Writable{
     private int amount;
     private int month;
     private int day;
@@ -42,4 +46,15 @@ public class Transaction {
         return title;
     }
 
+    // Code source: JsonSerializationDemo file: https://github.com/stleary/JSON-java
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("amount", amount);
+        json.put("day", day);
+        json.put("month", month);
+        json.put("year", year);
+        json.put("title", title);
+        return json;
+    }
 }

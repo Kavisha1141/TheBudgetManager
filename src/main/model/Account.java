@@ -2,8 +2,13 @@ package model;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 // creates an account with name, balance, list of earnings, list of expenses and savings in dollars
-public class Account {
+public class Account implements Writable{
 
     // fields
     private String name;
@@ -117,6 +122,32 @@ public class Account {
     // EFFECTS: sets a target for savings
     public void setSavingTarget(int amount) {
         savingsTarget = amount;
+    }
+
+    //Code source: JsonSerializationDemo file: https://github.com/stleary/JSON-java
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("Account name", name);
+        json.put("Account password", password);
+        json.put("Balance", balance);
+        json.put("List of Earnings", listToJson(listOfEarnings));
+        json.put("List of Expenses", listToJson(listOfExpenses));
+        json.put("Savings target", savingsTarget);
+        json.put("Amound saved", savings);
+        return json;
+    }
+
+    // EFFECTS: returns this account as a JSON array
+    // Code source: JsonSerializationDemo file: https://github.com/stleary/JSON-java
+    private JSONArray listToJson(ArrayList<Transaction> list) {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Transaction t : list) {
+            jsonArray.put(t.toJson());
+        }
+
+        return jsonArray;
     }
 
 }
