@@ -1,6 +1,6 @@
 package persistence;
+
 import model.Account;
-import model.Transaction;
 
 import static org.junit.Assert.assertEquals;
 
@@ -25,7 +25,7 @@ public class JsonReader {
     // EFFECTS: reads Account from file and returns it;
     // throws IOException if an error occurs reading data from file
     // Code source: JsonSerializationDemo file: https://github.com/stleary/JSON-java
-    public Account read() throws IOException{
+    public Account read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseAccount(jsonObject);
@@ -68,8 +68,7 @@ public class JsonReader {
                 JSONObject nextTr = (JSONObject) json;
                 addTransaction(acc, nextTr, typeOfTr);
             }
-        }
-        else {
+        } else {
             JSONArray jsonArray = jsonObject.getJSONArray("List of Expenses");
             for (Object json : jsonArray) {
                 JSONObject nextTr = (JSONObject) json;
@@ -82,15 +81,14 @@ public class JsonReader {
     // EFFECTS: parses transaction from JSON object and adds them to workroom
     private void addTransaction(Account acc, JSONObject jsonObject, String typeOfTr) {
         if (typeOfTr == "earnings") {
-            
+
             int amount = jsonObject.getInt("amount");
             int day = jsonObject.getInt("day");
             int month = jsonObject.getInt("month");
             int year = jsonObject.getInt("year");
             String title = jsonObject.getString("title");
             acc.addEarning(amount, day, month, year, title);
-        }
-        else {
+        } else {
 
             int amount = jsonObject.getInt("amount");
             int day = jsonObject.getInt("day");

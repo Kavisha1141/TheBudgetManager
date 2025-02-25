@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TestJsonReader extends JsonTest{
+public class TestJsonReader extends JsonTest {
 
     // Code source: JsonSerializationDemo file: https://github.com/stleary/JSON-java
     @Test
@@ -20,7 +20,7 @@ public class TestJsonReader extends JsonTest{
             // pass
         }
     }
-    
+
     @Test
     void testReaderEmptyAccount() {
         JsonReader reader = new JsonReader("./data/testReaderEmptyAccount.json");
@@ -44,7 +44,7 @@ public class TestJsonReader extends JsonTest{
             List<Transaction> earnings = acc.getListOfEarnings();
             assertEquals(2, earnings.size());
             checkTransaction("Received gift from Mom", 251, 1, 3, 2024, earnings.get(0));
-            checkTransaction("Received gift from Dad",249,5,3,2021, earnings.get(1));
+            checkTransaction("Received gift from Dad", 249, 5, 3, 2021, earnings.get(1));
 
             List<Transaction> expenses = acc.getListOfExpenses();
             assertEquals(1, expenses.size());
