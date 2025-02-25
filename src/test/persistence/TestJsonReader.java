@@ -3,7 +3,6 @@ package persistence;
 import org.junit.jupiter.api.Test;
 import model.Account;
 import model.Transaction;
-import persistence.JsonTest;
 import java.io.IOException;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
