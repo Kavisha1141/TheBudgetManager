@@ -142,14 +142,13 @@ public class Account implements Writable{
     // EFFECTS: returns this account as a JSON array
     // Code source: JsonSerializationDemo file: https://github.com/stleary/JSON-java
     private JSONArray listToJson(ArrayList<Transaction> list) {
-        // JSONArray jsonArray = new JSONArray();
+        JSONArray jsonArray = new JSONArray();
 
-        // for (Transaction t : list) {
-        //     jsonArray.put(t.toJson());
-        // }
+        for (Transaction t : list) {
+            jsonArray.put(t.toJson());
+        }
 
-        // return jsonArray;
-        return null;
+        return jsonArray;
     }
 
 }

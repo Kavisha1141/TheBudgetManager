@@ -35,15 +35,15 @@ public class TestJsonReader extends JsonTest{
     }
 
     @Test
-    void testReaderGeneralWorkRoom() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralWorkRoom.json");
+    void testReaderGeneralAccount() {
+        JsonReader reader = new JsonReader("./data/testReaderGeneralAccount.json");
         try {
             Account acc = reader.read();
             assertEquals("account 2", acc.getName());
             assertEquals("211", acc.getPassword());
             List<Transaction> earnings = acc.getListOfEarnings();
             assertEquals(2, earnings.size());
-            checkTransaction("Received gift from Mom", 251, 1, 3, 2025, earnings.get(0));
+            checkTransaction("Received gift from Mom", 251, 1, 3, 2024, earnings.get(0));
             checkTransaction("Received gift from Dad",249,5,3,2021, earnings.get(1));
 
             List<Transaction> expenses = acc.getListOfExpenses();

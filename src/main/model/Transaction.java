@@ -50,13 +50,12 @@ public class Transaction implements Writable{
     // Code source: JsonSerializationDemo file: https://github.com/stleary/JSON-java
     @Override
     public JSONObject toJson() {
-        // JSONObject json = new JSONObject();
-        // json.put("amount", amount);
-        // json.put("day", day);
-        // json.put("month", month);
-        // json.put("year", year);
-        // json.put("title", title);
-        // return json;
-        return null;
+        JSONObject json = new JSONObject();
+        json.put("amount", amount);
+        json.put("day", day);
+        json.put("month", month);
+        json.put("year", year);
+        json.put("title", title);
+        return json;
     }
 }
