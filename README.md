@@ -19,5 +19,5 @@ expenses, and saving goals.
 - I want to be able to set a **target amount** for my **savings** 
 - I want to be able to view my money spend in total, my savings in total, and my income left
 - I want to be able to view a user report of all expenses, earnings, savings and balance
-- I want to be able to save ALL account info into a file
-- I want to be able to reload previously saved account info from any/all accounts
+- I want to be able to save my account info into a file
+- I want to be able to reload previously saved account info from my accounts

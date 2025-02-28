@@ -10,6 +10,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 // A budget manager application that allows user to create an account to manage earnings, expenses, savings and balance
 public class BudgetManager {
     private static final String JSON_STORE = "./data/CurrentAccounts.json";
@@ -453,6 +456,26 @@ public class BudgetManager {
             loadAccount(next);
         }
     }
+
+    // // EFFECTS: returns this account as a JSON array
+    // // Code source: JsonSerializationDemo file: https://github.com/stleary/JSON-java
+    // private JSONArray listToJson(ArrayList<Account> list) {
+    //     JSONArray jsonArray = new JSONArray();
+    //     for (Account acc : list) {
+    //         jsonArray.put(acc.toJson());
+    //     }
+    //     return jsonArray;
+    // }
+
+    // //Code source: JsonSerializationDemo file: https://github.com/stleary/JSON-java
+    // // EFFECTS: returns listOfAccounts as a json object
+    // public JSONObject toJson() {
+    //     JSONObject json = new JSONObject();
+    //     json.put("Accounts", listToJson(listOfAccounts));
+    //     return json;
+    // }
+
+    
 
 
 }
