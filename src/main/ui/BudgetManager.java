@@ -52,6 +52,8 @@ public class BudgetManager {
         System.out.println("v: View an account");
         System.out.println("w: View all accounts");
         System.out.println("q: Quit application");
+        System.out.println("s: save all account info to file");
+        System.out.println("l: load all account info from file");
         printDivider();
     }
 
@@ -125,6 +127,14 @@ public class BudgetManager {
                 break;
             case "q":
                 quitApplication();
+                printDivider();
+                break;
+            case "s":
+                saveAllAccounts();
+                printDivider();
+                break;
+            case "l":
+                loadAllAccounts();
                 printDivider();
                 break;
             default:
@@ -423,7 +433,7 @@ public class BudgetManager {
 
 
     // MODIFIES: this
-    // EFFECTS: loads workroom from file
+    // EFFECTS: loads an Account from file
     private void loadAccount(Account acc) {
         try {
             acc = jsonReader.read();
@@ -432,5 +442,20 @@ public class BudgetManager {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
+
+    // EFFECTS: saves all Accounts to file
+    private void saveAllAccounts() {
+        for (Account next: listOfAccounts) {
+            saveAccount(next);
+        }
+    }
+
+    // EFFECTS: loads all Accounts from file
+    private void loadAllAccounts() {
+        for (Account next: listOfAccounts) {
+            loadAccount(next);
+        }
+    }
+
 
 }
