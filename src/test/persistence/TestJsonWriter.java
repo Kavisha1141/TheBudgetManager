@@ -45,12 +45,12 @@ class TestJsonWriter extends JsonTest {
     @Test
     void testWriterGeneralWorkroom() {
         try {
-            Account acc = new Account("account 2" , "211");
+            Account acc = new Account("account 2", "211");
             acc.addEarning(251, 1, 3, 2024, "Received gift from Mom");
             acc.addExpense(20, 6, 4, 2024, "Bought UBC shirt");
-            acc.addEarning(249,5, 3, 2021, "Received gift from Dad");
+            acc.addEarning(249, 5, 3, 2021, "Received gift from Dad");
             acc.setSavingTarget(50);
-            assertEquals(480,acc.getBalance());
+            assertEquals(480, acc.getBalance());
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralWorkroom.json");
             writer.open();
             writer.write(acc);
@@ -69,7 +69,7 @@ class TestJsonWriter extends JsonTest {
             assertEquals(1, expenses.size());
             checkTransaction("Bought UBC shirt", 20, 6, 4, 2024, expenses.get(0));
 
-            assertEquals(50,accRead.getSavingsTarget());
+            assertEquals(50, accRead.getSavingsTarget());
             assertEquals(0, accRead.getSavings());
             assertEquals(480, accRead.getBalance());
 
