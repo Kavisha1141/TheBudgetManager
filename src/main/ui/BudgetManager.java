@@ -2,17 +2,23 @@ package ui;
 
 import model.Account;
 import model.Transaction;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 // A budget manager application that allows user to create an account to manage earnings, expenses, savings and balance
 public class BudgetManager {
-
+    private static final String JSON_STORE = "./data/CurrentAccounts.json";
     private ArrayList<Account> listOfAccounts;
     private Account currentAccount;
     private boolean isProgramRunning;
     private Scanner scanner;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // main program
     // SOURCE: I used the flashcard reviewer app to learn how implementing an UI
@@ -22,6 +28,8 @@ public class BudgetManager {
         System.out.println();
         System.out.println("Welcome to the Budget Manager!");
         printDivider();
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         while (this.isProgramRunning) {
             handleMenu();
             printDivider();
@@ -399,6 +407,30 @@ public class BudgetManager {
         System.out.println("List of Expenses:");
         printList(currentAccount.getListOfExpenses());
         printDivider();
+    }
+
+    // EFFECTS: saves an Account to file
+    private void saveAccount(Account acc) {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(acc);
+            jsonWriter.close();
+            System.out.println("Saved " + acc.getName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadAccount(Account acc) {
+        try {
+            acc = jsonReader.read();
+            System.out.println("Loaded " + acc.getName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
 }
