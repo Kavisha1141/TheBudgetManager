@@ -127,7 +127,6 @@ public class BudgetManager {
                 break;
             case "q":
                 quitApplication();
-                printDivider();
                 break;
             case "s":
                 saveAllAccounts();
@@ -431,7 +430,6 @@ public class BudgetManager {
         }
     }
 
-
     // MODIFIES: this
     // EFFECTS: loads an Account from file
     private void loadAccount(Account acc) {
@@ -449,7 +447,7 @@ public class BudgetManager {
             saveAccount(next);
         }
     }
-
+    
     // EFFECTS: loads all Accounts from file
     private void loadAllAccounts() {
         for (Account next: listOfAccounts) {
