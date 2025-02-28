@@ -440,14 +440,13 @@ public class BudgetManager {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
-
+    
     // EFFECTS: saves all Accounts to file
     private void saveAllAccounts() {
         for (Account next: listOfAccounts) {
             saveAccount(next);
         }
     }
-    
     // EFFECTS: loads all Accounts from file
     private void loadAllAccounts() {
         for (Account next: listOfAccounts) {

@@ -1,9 +1,15 @@
 {
     "Account name": "kavisha",
-    "List of Earnings": [],
-    "Account password": "1141",
+    "List of Earnings": [{
+        "amount": 90000,
+        "month": 3,
+        "year": 3,
+        "title": "3",
+        "day": 3
+    }],
+    "Account password": "5678",
     "Amount saved": 0,
     "List of Expenses": [],
     "Savings target": 0,
-    "Balance": 0
+    "Balance": 90000
 }
