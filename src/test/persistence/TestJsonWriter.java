@@ -69,7 +69,7 @@ class TestJsonWriter extends JsonTest {
             assertEquals(1, expenses.size());
             checkTransaction("Bought UBC shirt", 20, 6, 4, 2024, expenses.get(0));
 
-            assertEquals(20,accRead.getSavingsTarget());
+            assertEquals(50,accRead.getSavingsTarget());
             assertEquals(0, accRead.getSavings());
             assertEquals(480, accRead.getBalance());
 

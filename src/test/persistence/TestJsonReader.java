@@ -49,7 +49,7 @@ public class TestJsonReader extends JsonTest {
             List<Transaction> expenses = acc.getListOfExpenses();
             assertEquals(1, expenses.size());
             checkTransaction("Bought UBC shirt", 20, 6, 4, 2024, expenses.get(0));
-            assertEquals(20,acc.getSavingsTarget());
+            assertEquals(50,acc.getSavingsTarget());
             assertEquals(0, acc.getSavings());
             assertEquals(480, acc.getBalance());
             

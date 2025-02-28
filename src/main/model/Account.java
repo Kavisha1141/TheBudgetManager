@@ -134,7 +134,7 @@ public class Account implements Writable {
         json.put("List of Earnings", listToJson(listOfEarnings));
         json.put("List of Expenses", listToJson(listOfExpenses));
         json.put("Savings target", savingsTarget);
-        json.put("Amound saved", savings);
+        json.put("Amount saved", savings);
         return json;
     }
 
