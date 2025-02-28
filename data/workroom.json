@@ -1,0 +1,32 @@
+{
+   "Account name": "account 2",
+    "Account password": "211",
+    "Balance": 480,
+    "List of Earnings": [
+        {
+            "amount": 251,
+            "day": 1,
+            "month": 3,
+            "year": 2024,
+            "title": "Received gift from Mom"
+        },
+        {
+            "amount": 249,
+            "day": 5,
+            "month": 3,
+            "year": 2021,
+            "title": "Received gift from Dad"
+        }
+    ],
+    "List of Expenses": [
+        {
+            "amount": 20,
+            "day": 6,
+            "month": 4,
+            "year": 2024,
+            "title": "Bought UBC shirt"
+        }
+    ],
+    "Savings target": 50,
+    "Amount saved": 0
+}
