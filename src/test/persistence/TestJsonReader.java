@@ -49,10 +49,10 @@ public class TestJsonReader extends JsonTest {
             List<Transaction> expenses = acc.getListOfExpenses();
             assertEquals(1, expenses.size());
             checkTransaction("Bought UBC shirt", 20, 6, 4, 2024, expenses.get(0));
-            assertEquals(50,acc.getSavingsTarget());
+            assertEquals(50, acc.getSavingsTarget());
             assertEquals(0, acc.getSavings());
             assertEquals(480, acc.getBalance());
-            
+
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
