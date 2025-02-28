@@ -124,7 +124,7 @@ public class Account implements Writable {
         savingsTarget = amount;
     }
 
-    //Code source: JsonSerializationDemo file: https://github.com/stleary/JSON-java
+    // Code source: JsonSerializationDemo file: https://github.com/stleary/JSON-java
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

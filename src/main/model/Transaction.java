@@ -5,7 +5,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 // constructs a Transaction with amt, date and title
-public class Transaction implements Writable{
+public class Transaction implements Writable {
     private int amount;
     private int month;
     private int day;

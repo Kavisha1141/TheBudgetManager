@@ -47,8 +47,8 @@ public class BudgetManager {
         printDivider();
         System.out.println("Please select an option:\n");
         System.out.println("c: Create new account");
+        System.out.println("o: Open your account");
         System.out.println("q: Quit application");
-        System.out.println("s: save all account info to file");
         System.out.println("l: load all account info from file");
         printDivider();
     }
@@ -62,6 +62,7 @@ public class BudgetManager {
         System.out.println("c: Add an Expense");
         System.out.println("d: Set a saving target");
         System.out.println("e: Add savings");
+        System.out.println("s: save all account info to file");
         System.out.println("f: Logout and return to main menu");
         printDivider();
     }
@@ -113,15 +114,15 @@ public class BudgetManager {
                 createAccount();
                 printDivider();
                 break;
+            case "o":
+                openAccount();
+                printDivider();
+                break;
             case "q":
                 quitApplication();
                 break;
-            case "s":
-                saveAccount(currentAccount);
-                printDivider();
-                break;
             case "l":
-                loadAccount(currentAccount);
+                loadAccount();
                 printDivider();
                 break;
             default:
@@ -177,12 +178,15 @@ public class BudgetManager {
             case "d":
                 setTarget();
                 break;
+            case "s":
+                saveAccount();
+                printDivider();
+                break;
             case "e":
                 saveAmount();
                 break;
             case "f":
                 System.out.println("Successfully logged out!");
-                currentAccount = null;
                 handleMenu();
                 break;
             default:
@@ -230,6 +234,25 @@ public class BudgetManager {
                 System.out.println("Invalid option inputted. Please try again.");
         }
         handleViewMenu();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: creates a new account with username and password; adds it to list of
+    // accounts
+    public void openAccount() {
+        if (currentAccount != null) {
+            System.out.println("Please enter Account name:");
+            String name = this.scanner.nextLine();
+            System.out.println("Please enter Account password:");
+            String password = this.scanner.nextLine();
+            if (currentAccount.getName().equals(name) & currentAccount.getPassword().equals(password)) {
+                handleSubMenu();
+            } else {
+                System.out.println("Username or password incorrect!");
+            }
+        } else {
+            System.out.println("No accounts created! Please create an account first!");
+        }
     }
 
     // REQUIRES: currentAccount != null
@@ -371,12 +394,12 @@ public class BudgetManager {
     }
 
     // EFFECTS: saves an Account to file
-    private void saveAccount(Account acc) {
+    private void saveAccount() {
         try {
             jsonWriter.open();
-            jsonWriter.write(acc);
+            jsonWriter.write(currentAccount);
             jsonWriter.close();
-            System.out.println("Saved " + acc.getName() + " to " + JSON_STORE);
+            System.out.println("Saved " + currentAccount.getName() + " to " + JSON_STORE);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
@@ -384,10 +407,10 @@ public class BudgetManager {
 
     // MODIFIES: this
     // EFFECTS: loads an Account from file
-    private void loadAccount(Account acc) {
+    private void loadAccount() {
         try {
-            acc = jsonReader.read();
-            System.out.println("Loaded " + acc.getName() + " from " + JSON_STORE);
+            currentAccount = jsonReader.read();
+            System.out.println("Loaded " + currentAccount.getName() + " from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }
