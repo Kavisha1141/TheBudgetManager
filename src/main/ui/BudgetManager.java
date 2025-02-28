@@ -10,13 +10,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 // A budget manager application that allows user to create an account to manage earnings, expenses, savings and balance
 public class BudgetManager {
     private static final String JSON_STORE = "./data/CurrentAccounts.json";
-    private ArrayList<Account> listOfAccounts;
     private Account currentAccount;
     private boolean isProgramRunning;
     private Scanner scanner;
@@ -41,7 +38,6 @@ public class BudgetManager {
 
     // initializes the app
     public void initialize() {
-        listOfAccounts = new ArrayList<>();
         isProgramRunning = true;
         currentAccount = null;
         scanner = new Scanner(System.in);
@@ -52,8 +48,6 @@ public class BudgetManager {
         printDivider();
         System.out.println("Please select an option:\n");
         System.out.println("c: Create new account");
-        System.out.println("v: View an account");
-        System.out.println("w: View all accounts");
         System.out.println("q: Quit application");
         System.out.println("s: save all account info to file");
         System.out.println("l: load all account info from file");
@@ -120,23 +114,15 @@ public class BudgetManager {
                 createAccount();
                 printDivider();
                 break;
-            case "v":
-                openAccount();
-                printDivider();
-                break;
-            case "w":
-                viewAllAccounts();
-                printDivider();
-                break;
             case "q":
                 quitApplication();
                 break;
             case "s":
-                saveAllAccounts();
+                saveAccount(currentAccount);
                 printDivider();
                 break;
             case "l":
-                loadAllAccounts();
+                loadAccount(currentAccount);
                 printDivider();
                 break;
             default:
@@ -160,45 +146,9 @@ public class BudgetManager {
         String password = this.scanner.nextLine();
 
         Account newAccount = new Account(name, password);
-        listOfAccounts.add(newAccount);
         currentAccount = newAccount;
         System.out.println("Account successfully created! \n");
         handleSubMenu();
-    }
-
-    // REQUIRES: listOfAccounts.size() > 0
-    // MODIFIES: this
-    // EFFECTS: creates a new account with username and password; adds it to list of
-    // accounts
-    public void openAccount() {
-        if (!listOfAccounts.isEmpty()) {
-            System.out.println("Please enter Account name:");
-            String name = this.scanner.nextLine();
-            System.out.println("Please enter Account password:");
-            String password = this.scanner.nextLine();
-            for (Account account : listOfAccounts) {
-                if (account.getName().equals(name) & account.getPassword().equals(password)) {
-                    currentAccount = account;
-                    handleSubMenu();
-                    break;
-                }
-            }
-            System.out.println("Username or password incorrect!");
-        } else {
-            System.out.println("No account created yet!");
-        }
-    }
-
-    // EFFECTS: prints all account names
-    public void viewAllAccounts() {
-        if (!listOfAccounts.isEmpty()) {
-            System.out.println("Account names: ");
-            for (Account account : listOfAccounts) {
-                System.out.println(account.getName());
-            }
-        } else {
-            System.out.println("No accounts created yet!");
-        }
     }
 
     // MODIFIES: this
@@ -443,37 +393,6 @@ public class BudgetManager {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
-    
-    // EFFECTS: saves all Accounts to file
-    private void saveAllAccounts() {
-        for (Account next: listOfAccounts) {
-            saveAccount(next);
-        }
-    }
-    // EFFECTS: loads all Accounts from file
-    private void loadAllAccounts() {
-        for (Account next: listOfAccounts) {
-            loadAccount(next);
-        }
-    }
-
-    // // EFFECTS: returns this account as a JSON array
-    // // Code source: JsonSerializationDemo file: https://github.com/stleary/JSON-java
-    // private JSONArray listToJson(ArrayList<Account> list) {
-    //     JSONArray jsonArray = new JSONArray();
-    //     for (Account acc : list) {
-    //         jsonArray.put(acc.toJson());
-    //     }
-    //     return jsonArray;
-    // }
-
-    // //Code source: JsonSerializationDemo file: https://github.com/stleary/JSON-java
-    // // EFFECTS: returns listOfAccounts as a json object
-    // public JSONObject toJson() {
-    //     JSONObject json = new JSONObject();
-    //     json.put("Accounts", listToJson(listOfAccounts));
-    //     return json;
-    // }
 
     
 
