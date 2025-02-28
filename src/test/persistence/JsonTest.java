@@ -1,6 +1,5 @@
 package persistence;
 
-import model.Account;
 import model.Transaction;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

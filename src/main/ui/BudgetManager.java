@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 // A budget manager application that allows user to create an account to manage earnings, expenses, savings and balance
 public class BudgetManager {
     private static final String JSON_STORE = "./data/CurrentAccounts.json";
@@ -393,8 +392,5 @@ public class BudgetManager {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
-
-    
-
 
 }
