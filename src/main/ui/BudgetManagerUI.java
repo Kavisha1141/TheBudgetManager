@@ -23,6 +23,10 @@ public class BudgetManagerUI extends JFrame {
     private BudgetManagerUI() {
         super("BudgetManager Console");
         setSize(WIDTH, HEIGHT);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        sidebar = new JTabbedPane();
+        sidebar.setTabPlacement(JTabbedPane.LEFT);
+        setVisible(true);
     }
 
     //MODIFIES: this
