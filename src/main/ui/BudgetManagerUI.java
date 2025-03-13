@@ -1,8 +1,13 @@
 package ui;
 
+import java.util.List;
+import java.util.ArrayList;
 import javax.swing.*;
 import model.Account;
+import model.Transaction;
 import ui.tabs.DashboardTab;
+import ui.tabs.EarningsTab;
+import ui.tabs.ExpensesTab;
 
 public class BudgetManagerUI extends JFrame {
 
@@ -25,24 +30,64 @@ public class BudgetManagerUI extends JFrame {
         super("BudgetManager Console");
         setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
         sidebar = new JTabbedPane();
         sidebar.setTabPlacement(JTabbedPane.LEFT);
+
+        createAccount();
+
         loadTabs();
         add(sidebar);
         setVisible(true);
     }
 
+    public void createAccount() {
+        account = new Account("User1", "1141");
+        account.addEarning(1000, 12, 1, 2025, "Received paycheck");
+    }
+
     //MODIFIES: this
     //EFFECTS: adds Dashboard tab, Earnings tab, and expenses tab to this UI
     private void loadTabs() {
-        JPanel homeTab = new DashboardTab(this);
-        sidebar.add(homeTab, DASHBOARD_TAB_INDEX);
+        JPanel dashboardTab = new DashboardTab(this);
+        JPanel earningsTab = new EarningsTab(this);
+        JPanel expensesTab = new ExpensesTab(this);
 
+        sidebar.add(dashboardTab, DASHBOARD_TAB_INDEX);
+        sidebar.setTitleAt(DASHBOARD_TAB_INDEX, "Dashboard");
+
+        sidebar.add(earningsTab, EARNINGS_TAB_INDEX);
+        sidebar.setTitleAt(EARNINGS_TAB_INDEX, "Earnings");
+
+        sidebar.add(expensesTab, EXPENSES_TAB_INDEX);
+        sidebar.setTitleAt(EXPENSES_TAB_INDEX, "Expenses");
     }
 
     // returns current account
     public Account getAccount() {
         return account;
+    }
+
+    //EFFECTS: returns sidebar of this UI
+    public JTabbedPane getTabbedPane() {
+        return sidebar;
+    }
+
+     //EFFECTS: returns a String list of transactions and its info
+    public String stringTransaction(ArrayList<Transaction> listToPrint) {
+        StringBuilder status = new StringBuilder();
+        status.append("          TITLE                 AMOUNT               DATE");
+        for (Transaction t : listToPrint) {
+            status.append("\n").append(transactionInfo(t));
+        }
+        return status.toString();
+    }
+
+    public String transactionInfo(Transaction transaction) {
+
+        return transaction.getTitle() + "          " 
+        +"$"+ transaction.getAmount()+ "          " + transaction.getMonth()
+        + "/"+transaction.getDay() + "/" +transaction.getYear();
     }
 
 }
