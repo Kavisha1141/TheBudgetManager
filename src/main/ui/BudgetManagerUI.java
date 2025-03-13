@@ -41,7 +41,7 @@ public class BudgetManagerUI extends JFrame {
     }
 
     // returns current account
-    private Account getAccount() {
+    public Account getAccount() {
         return account;
     }
 
