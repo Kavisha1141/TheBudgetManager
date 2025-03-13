@@ -2,6 +2,7 @@ package ui;
 
 import javax.swing.*;
 import model.Account;
+import ui.tabs.DashboardTab;
 
 public class BudgetManagerUI extends JFrame {
 
@@ -26,13 +27,22 @@ public class BudgetManagerUI extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         sidebar = new JTabbedPane();
         sidebar.setTabPlacement(JTabbedPane.LEFT);
+        loadTabs();
+        add(sidebar);
         setVisible(true);
     }
 
     //MODIFIES: this
     //EFFECTS: adds Dashboard tab, Earnings tab, and expenses tab to this UI
     private void loadTabs() {
+        JPanel homeTab = new DashboardTab(this);
+        sidebar.add(homeTab, DASHBOARD_TAB_INDEX);
 
+    }
+
+    // returns current account
+    private Account getAccount() {
+        return account;
     }
 
 }
