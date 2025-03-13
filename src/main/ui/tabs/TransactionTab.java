@@ -10,7 +10,7 @@ import ui.BudgetManagerUI;
 
 public class TransactionTab extends Tab {
 
-    protected static final String REPORT_GEN_MESSAGE = "Latest List of Earnings report: Today at ";
+    protected static final String REPORT_GEN_MESSAGE = "Latest report generated today at ";
 
     protected JScrollPane reportPane;
     protected JTextArea reportText;
@@ -41,6 +41,7 @@ public class TransactionTab extends Tab {
 
         add(reportBlock);
     }
+
 
     //MODIFIES: this
     //EFFECTS: updates current time in format HH:mm:ss
