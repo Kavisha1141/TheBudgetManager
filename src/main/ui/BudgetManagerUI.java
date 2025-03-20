@@ -83,6 +83,7 @@ public class BudgetManagerUI extends JFrame {
         return status.toString();
     }
 
+    //EFFECTS: returns a transaction as a string
     public String transactionInfo(Transaction transaction) {
         return transaction.getTitle() + "          " 
         +"$"+ transaction.getAmount()+ "          " + transaction.getMonth()

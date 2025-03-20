@@ -3,8 +3,11 @@ package ui;
 // code learned from SmartHome lecture lab
 public enum ButtonNames {
     EARNINGS("Earnings"),
+    ADD_EARNINGS("Add an earning"),
     EXPENSES("Expenses"),
+    ADD_EXPENSE("Add an expense"),
     SAVINGS("Savings"),
+    SAVE_AMOUNT("Add to savings"),
     DASHBOARD("Dashboard"),
     LOGOUT("Logout"),
     SAVE("Save info"),

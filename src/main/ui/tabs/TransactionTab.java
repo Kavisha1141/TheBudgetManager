@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import ui.BudgetManagerUI;
+import ui.ButtonNames;
 
 public class TransactionTab extends Tab {
 
@@ -28,17 +29,14 @@ public class TransactionTab extends Tab {
         timeFormat = new SimpleDateFormat("HH:mm:ss");
         updateCurrTime();
 
-        JPanel reportBlock = new JPanel(new GridLayout(2, 1));
+        JPanel reportBlock = new JPanel(new GridLayout(3, 1));
         reportBlock.setSize(BudgetManagerUI.WIDTH - 1,
                 BudgetManagerUI.HEIGHT - 3);
-        reportMessage = new JLabel("");
-        reportPane = new JScrollPane(new JTextArea(10, 40));
-        reportText = new JTextArea("", 10, 40);
+        reportPane = new JScrollPane(new JTextArea(20, 40));
+        reportText = new JTextArea("", 16, 40);
         reportText.setVisible(true);
-
-        reportBlock.add(reportMessage);
+        
         reportBlock.add(reportPane);
-
         add(reportBlock);
     }
 
