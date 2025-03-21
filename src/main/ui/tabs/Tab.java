@@ -18,7 +18,6 @@ public abstract class Tab extends JPanel {
         JPanel p = new JPanel();
         p.setLayout(new FlowLayout());
         p.add(b);
-
         return p;
     }
 

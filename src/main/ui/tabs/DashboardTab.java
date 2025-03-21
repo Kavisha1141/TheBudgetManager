@@ -1,7 +1,6 @@
 package ui.tabs;
 
 import javax.swing.JLabel;
-import ui.ButtonNames;
 import ui.BudgetManagerUI;
 
 import javax.swing.*;
@@ -16,7 +15,6 @@ public class DashboardTab extends Tab {
     public DashboardTab(BudgetManagerUI controller) {
         super(controller);
         setLayout(new GridLayout(3, 1));
-
         placeGreeting();
     }
 

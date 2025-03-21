@@ -1,8 +1,8 @@
 package ui;
 
-import java.util.List;
 import java.util.ArrayList;
 import javax.swing.*;
+
 import model.Account;
 import model.Transaction;
 import ui.tabs.DashboardTab;
@@ -41,6 +41,7 @@ public class BudgetManagerUI extends JFrame {
         setVisible(true);
     }
 
+    //updates current account
     public void createAccount() {
         account = new Account("User1", "1141");
         account.addEarning(1000, 12, 1, 2025, "Received paycheck");
@@ -75,8 +76,9 @@ public class BudgetManagerUI extends JFrame {
 
      //EFFECTS: returns a String list of transactions and its info
     public String stringTransaction(ArrayList<Transaction> listToPrint) {
-        StringBuilder status = new StringBuilder();
-        status.append("          TITLE                 AMOUNT               DATE");
+        StringBuilder status = new StringBuilder(); 
+        status.append("               TITLE                               AMOUNT                        DATE");
+        status.append("\n");
         for (Transaction t : listToPrint) {
             status.append("\n").append(transactionInfo(t));
         }
@@ -85,8 +87,8 @@ public class BudgetManagerUI extends JFrame {
 
     //EFFECTS: returns a transaction as a string
     public String transactionInfo(Transaction transaction) {
-        return transaction.getTitle() + "          " 
-        +"$"+ transaction.getAmount()+ "          " + transaction.getMonth()
+        return transaction.getTitle() + "                             " 
+        +"$"+ transaction.getAmount()+ "                   " + transaction.getMonth()
         + "/"+transaction.getDay() + "/" +transaction.getYear();
     }
 

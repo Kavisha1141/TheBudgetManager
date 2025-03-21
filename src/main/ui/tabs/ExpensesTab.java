@@ -10,9 +10,6 @@ public class ExpensesTab extends TransactionTab {
     }
 
     public void printEarnings() {
-        updateCurrTime();
-        String message = REPORT_GEN_MESSAGE + currTime;
-        reportMessage.setText(message);
         reportText.setText(getController().stringTransaction(getController().getAccount().getListOfExpenses()));
         reportPane.setViewportView(reportText);
     }
