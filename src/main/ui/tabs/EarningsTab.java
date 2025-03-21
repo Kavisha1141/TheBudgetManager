@@ -24,4 +24,5 @@ public class EarningsTab extends TransactionTab {
 
     }
 
+    
 }
