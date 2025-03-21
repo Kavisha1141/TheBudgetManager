@@ -6,12 +6,22 @@ public class EarningsTab extends TransactionTab {
 
     public EarningsTab(BudgetManagerUI controller) {
         super(controller);
-        printEarnings();
+        setUpHeading("EARNINGS");
+        setUpButtons("earning");
+        setUpScrollPane();
+        reportBlock.setVisible(true);
+        add(reportBlock);
+        updateTransactionReportButton.addActionListener(e -> printReport());
+        addTransactionButton.addActionListener(e -> addExpense());
     }
 
-    public void printEarnings() {
+    public void printReport() {
         reportText.setText(getController().stringTransaction(getController().getAccount().getListOfEarnings()));
         reportPane.setViewportView(reportText);
+    }
+
+    public void addExpense() {
+
     }
 
 }

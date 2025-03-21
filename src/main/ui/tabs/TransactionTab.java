@@ -11,6 +11,8 @@ public class TransactionTab extends Tab {
     protected JScrollPane reportPane;
     protected JTextArea reportText;
     protected JLabel heading;
+    protected JButton updateTransactionReportButton;
+    protected JButton addTransactionButton;
 
     //REQUIRES: SmartHomeUI controller that holds this tab
     //EFFECTS: creates report tab with buttons and application status functionality
@@ -20,12 +22,9 @@ public class TransactionTab extends Tab {
         reportBlock.setLayout(new BoxLayout(reportBlock, BoxLayout.Y_AXIS));
         reportBlock.setSize(BudgetManagerUI.WIDTH - 5, BudgetManagerUI.HEIGHT - 3);
 
-        setUpHeading("Earnings");
-        setUpScrollPane();
-        reportBlock.setVisible(true);
-        add(reportBlock);
     }
 
+    //EFFECTS: sets up scroll pane with text 
     public void setUpScrollPane() {
         reportText = new JTextArea("", 16, 30);
         reportText.setLineWrap(true);
@@ -37,16 +36,33 @@ public class TransactionTab extends Tab {
         reportBlock.add(reportPane);
     }
 
+    //EFFECTS: sets up heading block on top of scrollpane
     public void setUpHeading(String headingText) {
         heading = new JLabel(headingText, SwingConstants.CENTER);
         JPanel headingPanel = new JPanel();
         headingPanel.add(heading);
         
-        headingPanel.setMaximumSize(new Dimension(400, 30));
-        headingPanel.setPreferredSize(new Dimension(400, 30));
+        headingPanel.setMaximumSize(new Dimension(500, 40));
+        headingPanel.setPreferredSize(new Dimension(500, 40));
 
         reportBlock.add(headingPanel, BorderLayout.NORTH);
     }
+
+    //EFFECTS: sets up buttons between heading and scroll pane
+    public void setUpButtons(String typeOfTransaction) {
+        updateTransactionReportButton = new JButton("Update "+typeOfTransaction+"s report");
+        addTransactionButton = new JButton("Add an "+typeOfTransaction);
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));
+        buttonPanel.add(updateTransactionReportButton);
+        buttonPanel.add(addTransactionButton);
+
+        buttonPanel.setMaximumSize(new Dimension(500, 40));
+        buttonPanel.setPreferredSize(new Dimension(500, 40));
+        reportBlock.add(buttonPanel);
+    }
+
 
 
 
