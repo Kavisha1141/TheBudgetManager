@@ -35,7 +35,7 @@ public class TransactionTab extends Tab {
         reportPane = new JScrollPane(new JTextArea(20, 40));
         reportText = new JTextArea("", 16, 40);
         reportText.setVisible(true);
-        
+        reportMessage = new JLabel("");
         reportBlock.add(reportPane);
         add(reportBlock);
     }
