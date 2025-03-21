@@ -7,8 +7,6 @@ import ui.BudgetManagerUI;
 
 public class TransactionTab extends Tab {
 
-    protected static final String REPORT_GEN_MESSAGE = "Latest report generated today at ";
-
     protected JPanel reportBlock;
     protected JScrollPane reportPane;
     protected JTextArea reportText;
@@ -18,28 +16,36 @@ public class TransactionTab extends Tab {
     //EFFECTS: creates report tab with buttons and application status functionality
     public TransactionTab (BudgetManagerUI controller) {
         super(controller);
-        reportBlock = new JPanel(new GridLayout(3, 1));
-        reportBlock.setSize(BudgetManagerUI.WIDTH - 1,
-                BudgetManagerUI.HEIGHT - 3);
-        setUpScrollPane();
+        reportBlock = new JPanel();
+        reportBlock.setLayout(new BoxLayout(reportBlock, BoxLayout.Y_AXIS));
+        reportBlock.setSize(BudgetManagerUI.WIDTH - 5, BudgetManagerUI.HEIGHT - 3);
+
         setUpHeading("Earnings");
+        setUpScrollPane();
         reportBlock.setVisible(true);
         add(reportBlock);
     }
 
     public void setUpScrollPane() {
-        reportPane = new JScrollPane(new JTextArea(20, 40));
-        reportText = new JTextArea("", 16, 40);
-        reportPane.add(reportText);
-        reportPane.setVisible(true);
-        reportText.setVisible(true);
+        reportText = new JTextArea("", 16, 30);
+        reportText.setLineWrap(true);
+        reportText.setWrapStyleWord(true);
+
+        reportPane = new JScrollPane(reportText);
+        reportPane.setMaximumSize(new Dimension(500, 250));  
+        reportPane.setPreferredSize(new Dimension(500, 250));
         reportBlock.add(reportPane);
     }
 
     public void setUpHeading(String headingText) {
-        heading = new JLabel(headingText);
-        heading.setVisible(true);
-        reportBlock.add(heading);
+        heading = new JLabel(headingText, SwingConstants.CENTER);
+        JPanel headingPanel = new JPanel();
+        headingPanel.add(heading);
+        
+        headingPanel.setMaximumSize(new Dimension(400, 30));
+        headingPanel.setPreferredSize(new Dimension(400, 30));
+
+        reportBlock.add(headingPanel, BorderLayout.NORTH);
     }
 
 
