@@ -70,7 +70,7 @@ public class TransactionTab extends Tab {
 
     // EFFECTS: adds popup window to add a transaction
     public void addTransactionPopUp(String typeOfTransaction) {
-        JDialog dialog = new JDialog(new JDialog((Frame) null, "Add Transaction", false));
+        dialog = new JDialog(new JDialog((Frame) null, "Add Transaction", false));
         dialog.setLayout(new GridLayout(6, 2, 10, 10));
 
         saveButton = new JButton("Save");

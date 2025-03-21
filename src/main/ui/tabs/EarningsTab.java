@@ -12,7 +12,7 @@ public class EarningsTab extends TransactionTab {
         reportBlock.setVisible(true);
         add(reportBlock);
         updateTransactionReportButton.addActionListener(e -> printReport());
-        addTransactionButton.addActionListener(e -> addExpense());
+        addTransactionButton.addActionListener(e -> addEarning());
     }
 
     public void printReport() {
@@ -20,8 +20,8 @@ public class EarningsTab extends TransactionTab {
         reportPane.setViewportView(reportText);
     }
 
-    public void addExpense() {
-
+    public void addEarning() {
+        addTransactionPopUp("earning");
     }
 
     

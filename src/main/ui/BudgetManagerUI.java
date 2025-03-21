@@ -87,8 +87,8 @@ public class BudgetManagerUI extends JFrame {
 
     //EFFECTS: returns a transaction as a string
     public String transactionInfo(Transaction transaction) {
-        return transaction.getTitle() + "                             " 
-        +"$"+ transaction.getAmount()+ "                   " + transaction.getMonth()
+        return transaction.getTitle() + "                              " 
+        +"$"+ transaction.getAmount()+ "                         " + transaction.getMonth()
         + "/"+transaction.getDay() + "/" +transaction.getYear();
     }
 

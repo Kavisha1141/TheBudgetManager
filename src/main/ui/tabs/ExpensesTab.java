@@ -13,7 +13,7 @@ public class ExpensesTab extends TransactionTab {
         
         add(reportBlock);
         updateTransactionReportButton.addActionListener(e -> printReport());
-        addTransactionButton.addActionListener(e -> addEarning());
+        addTransactionButton.addActionListener(e -> addExpense());
     }
 
 
@@ -22,8 +22,8 @@ public class ExpensesTab extends TransactionTab {
         reportPane.setViewportView(reportText);
     }
 
-    public void addEarning() {
-        
+    public void addExpense() {
+        addTransactionPopUp("expense");
     }
 
 }
