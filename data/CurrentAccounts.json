@@ -1,0 +1,15 @@
+{
+    "Account name": "User1",
+    "List of Earnings": [{
+        "amount": 1000,
+        "month": 1,
+        "year": 2025,
+        "title": "Received paycheck",
+        "day": 12
+    }],
+    "Account password": "1141",
+    "Amount saved": 0,
+    "List of Expenses": [],
+    "Savings target": 0,
+    "Balance": 1000
+}
