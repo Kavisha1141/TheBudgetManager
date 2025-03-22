@@ -2,7 +2,7 @@ package ui.tabs;
 
 import java.util.List;
 import java.util.ArrayList;
-import javax.swing.JLabel;
+
 import ui.BudgetManagerUI;
 
 import javax.swing.*;
@@ -48,11 +48,11 @@ public class DashboardTab extends Tab {
         Integer totalExpenses = this.getController().getAccount().getTotalExpenses();
         Integer totalSavings = this.getController().getAccount().getSavings();
         Integer savingsTarget = this.getController().getAccount().getSavingsTarget();
-        accountBalanceLabel = new JLabel("$" + accountBalance.toString());
-        totalEarningsLabel = new JLabel("$" + totalEarnings.toString());
-        totalExpensesLabel = new JLabel("$" + totalExpenses.toString());
-        totalSavingsLabel = new JLabel("$" + totalSavings.toString());
-        savingsTargetLabel = new JLabel("$" + savingsTarget.toString());
+        accountBalanceLabel = new JLabel("Account Balance:   "+"$" + accountBalance.toString());
+        totalEarningsLabel = new JLabel("Total earnings:   "+"$" + totalEarnings.toString());
+        totalExpensesLabel = new JLabel("Total expenses:   "+"$" + totalExpenses.toString());
+        totalSavingsLabel = new JLabel("Total savings:   "+"$" + totalSavings.toString());
+        savingsTargetLabel = new JLabel("Savings target:   "+"$" + savingsTarget.toString());
         List<JLabel> listOfInfo = new ArrayList<>();
         listOfInfo.add(accountBalanceLabel);
         listOfInfo.add(totalEarningsLabel);
@@ -65,10 +65,14 @@ public class DashboardTab extends Tab {
     //MODIFIES: this
     //EFFECTS: places all info
     private void printInfo(List<JLabel> list) {
+        JPanel infoPanel = new JPanel();
+        infoPanel.setBorder(BorderFactory.createEmptyBorder(0, 35, 0, 0));
+        infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
         for (JLabel label: list) {
-            label.setSize(WIDTH, HEIGHT / 3);
-            this.add(greet);
+            label.setSize(WIDTH, HEIGHT / 2);
+            infoPanel.add(label);
         }
+        this.add(infoPanel);
     }
 
 
