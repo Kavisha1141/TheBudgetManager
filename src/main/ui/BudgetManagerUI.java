@@ -31,7 +31,7 @@ public class BudgetManagerUI extends JFrame {
     }
 
     // EFFECTS: creates BudgetManager app, loads Account info, displays LoginScreen
-    private BudgetManagerUI() {
+    public BudgetManagerUI() {
         super("BudgetManager Console");
 
         jsonWriter = new JsonWriter(JSON_STORE);
@@ -52,8 +52,17 @@ public class BudgetManagerUI extends JFrame {
 
     //updates current account
     public void createAccount() {
-        account = new Account("User1", "1141");
-        account.addEarning(1000, 12, 1, 2025, "Received paycheck");
+        LoginFrame loginFrame = new LoginFrame(jsonReader, JSON_STORE);
+        loginFrame.setVisible(true);
+        while (loginFrame.getAccount() == null) {
+            try {
+                Thread.sleep(100); 
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        account = loginFrame.getAccount();
+        loginFrame.dispose();
     }
 
     //MODIFIES: this
