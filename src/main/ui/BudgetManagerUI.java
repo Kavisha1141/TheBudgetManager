@@ -46,6 +46,7 @@ public class BudgetManagerUI extends JFrame {
     }
 
     //updates current account
+    //CODE SOURCE: code learned from online sources
     public void createAccount() {
         LoginFrame loginFrame = new LoginFrame(jsonReader, JSON_STORE);
         loginFrame.setVisible(true);
