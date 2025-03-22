@@ -115,6 +115,19 @@ public class TransactionTab extends Tab {
             if (typeOfTransaction.equals("earning")) {
                 this.getController().getAccount().addEarning(amount, day, month, year, title);
             } else {
+                if (this.getController().getAccount().getBalance() - amount < 0) {
+                    JLabel notEnoughBalance = new JLabel("Not enough balance", SwingConstants.CENTER);
+                    notEnoughBalance.setFont(new Font("Arial", Font.PLAIN, 12));
+                    notEnoughBalance.setAlignmentX(CENTER_ALIGNMENT);
+                    JDialog newDialog = new JDialog((Frame) null, "Add Transaction", false);
+                    newDialog.setLayout(new GridLayout(1,1));
+                    newDialog.add(notEnoughBalance);
+                    newDialog.setSize(250, 150);
+                    newDialog.setLocationRelativeTo(this); 
+                    newDialog.setVisible(true);
+                    return;
+
+                }
                 this.getController().getAccount().addExpense(amount, day, month, year, title);
             }
             dialog.dispose();
