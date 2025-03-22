@@ -109,12 +109,12 @@ public class DashboardTab extends Tab {
 
     //EFFECTS: sets up savings, update and save to file and quit app button
     private void setUpButtons() {
-        JButton saveAmount = new JButton("Add to savings");
-
+        
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 2));
         buttonPanel.add(setUpUpdateButton());
         buttonPanel.add(setUpSaveButton());
+        buttonPanel.add(setUpAddToSavingsButton());
 
         buttonPanel.setPreferredSize(new Dimension(100, 30));
        
@@ -138,6 +138,13 @@ public class DashboardTab extends Tab {
         return save;
     }
 
+    //EFFECTS: sets up add to savings button
+    private JButton setUpAddToSavingsButton() {
+        JButton saveAmount = new JButton("Add to savings");
+        saveAmount.addActionListener(e -> addToSavings());
+        return saveAmount;
+    }
+
     //EFFECTS: saves info to file
     private void saveToFile() {
         try {
@@ -148,5 +155,10 @@ public class DashboardTab extends Tab {
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + this.getController().getJsonStore());
         }
+    }
+
+    //EFFECTS: adds to savings of account 
+    private void addToSavings() {
+
     }
 }
