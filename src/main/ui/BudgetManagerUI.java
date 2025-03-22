@@ -33,18 +33,13 @@ public class BudgetManagerUI extends JFrame {
     // EFFECTS: creates BudgetManager app, loads Account info, displays LoginScreen
     public BudgetManagerUI() {
         super("BudgetManager Console");
-
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
-
         setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
         sidebar = new JTabbedPane();
         sidebar.setTabPlacement(JTabbedPane.LEFT);
-
         createAccount();
-
         loadTabs();
         add(sidebar);
         setVisible(true);
@@ -71,13 +66,10 @@ public class BudgetManagerUI extends JFrame {
         JPanel dashboardTab = new DashboardTab(this);
         JPanel earningsTab = new EarningsTab(this);
         JPanel expensesTab = new ExpensesTab(this);
-
         sidebar.add(dashboardTab, DASHBOARD_TAB_INDEX);
         sidebar.setTitleAt(DASHBOARD_TAB_INDEX, "Dashboard");
-
         sidebar.add(earningsTab, EARNINGS_TAB_INDEX);
         sidebar.setTitleAt(EARNINGS_TAB_INDEX, "Earnings");
-
         sidebar.add(expensesTab, EXPENSES_TAB_INDEX);
         sidebar.setTitleAt(EXPENSES_TAB_INDEX, "Expenses");
     }
