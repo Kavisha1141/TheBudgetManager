@@ -19,7 +19,7 @@ public class TransactionTab extends Tab {
     protected JButton saveButton;
     protected JButton cancelButton;
 
-    // REQUIRES: SmartHomeUI controller that holds this tab
+    // REQUIRES: BudgetManagerUI controller that holds this tab
     // EFFECTS: creates report tab with buttons and application status functionality
     public TransactionTab(BudgetManagerUI controller) {
         super(controller);
@@ -78,6 +78,7 @@ public class TransactionTab extends Tab {
         setUpPopUpFields(typeOfTransaction);
     }
 
+    //EFFECTS: sets up  text fields for popup that appears when adding a transaction
     public void setUpPopUpFields(String typeOfTransaction) {
         JTextField titleField = new JTextField();
         JTextField amountField = new JTextField();
@@ -102,7 +103,7 @@ public class TransactionTab extends Tab {
         dialog.setVisible(true);
     }
 
-    //adds a transaction to the account
+    //EFFECTS: adds a transaction to the account; if expense > balance, shows NotEnoughBalance popup
     public void addTransaction(JTextField titleField, JTextField amountField,
             JTextField dayField, JTextField monthField, JTextField yearField, String typeOfTransaction) {
         saveButton.addActionListener(e -> {
@@ -111,22 +112,12 @@ public class TransactionTab extends Tab {
             int day = Integer.parseInt(dayField.getText());
             int month = Integer.parseInt(monthField.getText());
             int year = Integer.parseInt(yearField.getText());
-
             if (typeOfTransaction.equals("earning")) {
                 this.getController().getAccount().addEarning(amount, day, month, year, title);
             } else {
                 if (this.getController().getAccount().getBalance() - amount < 0) {
-                    JLabel notEnoughBalance = new JLabel("Not enough balance", SwingConstants.CENTER);
-                    notEnoughBalance.setFont(new Font("Arial", Font.PLAIN, 12));
-                    notEnoughBalance.setAlignmentX(CENTER_ALIGNMENT);
-                    JDialog newDialog = new JDialog((Frame) null, "Add Transaction", false);
-                    newDialog.setLayout(new GridLayout(1,1));
-                    newDialog.add(notEnoughBalance);
-                    newDialog.setSize(250, 150);
-                    newDialog.setLocationRelativeTo(this); 
-                    newDialog.setVisible(true);
+                    notEnoughBalancePopUp();
                     return;
-
                 }
                 this.getController().getAccount().addExpense(amount, day, month, year, title);
             }
@@ -134,4 +125,16 @@ public class TransactionTab extends Tab {
         });
     }
 
+    //EFFECTS: show not enough balance popup
+    public void notEnoughBalancePopUp() {
+        JLabel notEnoughBalance = new JLabel("Not enough balance", SwingConstants.CENTER);
+        notEnoughBalance.setFont(new Font("Arial", Font.PLAIN, 12));
+        notEnoughBalance.setAlignmentX(CENTER_ALIGNMENT);
+        JDialog newDialog = new JDialog((Frame) null, "Add Transaction", false);
+        newDialog.setLayout(new GridLayout(1,1));
+        newDialog.add(notEnoughBalance);
+        newDialog.setSize(250, 150);
+        newDialog.setLocationRelativeTo(this); 
+        newDialog.setVisible(true);
+    }
 }

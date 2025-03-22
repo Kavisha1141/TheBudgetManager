@@ -112,7 +112,7 @@ public class BudgetManagerUI extends JFrame {
     }
 
     public String getJsonStore() {
-        return this.JSON_STORE;
+        return JSON_STORE;
     }
 
 }
