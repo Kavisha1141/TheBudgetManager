@@ -10,7 +10,6 @@ public class ExpensesTab extends TransactionTab {
         setUpButtons("expense");
         setUpScrollPane();
         reportBlock.setVisible(true);
-        
         add(reportBlock);
         updateTransactionReportButton.addActionListener(e -> printReport());
         addTransactionButton.addActionListener(e -> addExpense());

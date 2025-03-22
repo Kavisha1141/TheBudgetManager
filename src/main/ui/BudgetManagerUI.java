@@ -5,12 +5,15 @@ import javax.swing.*;
 
 import model.Account;
 import model.Transaction;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 import ui.tabs.DashboardTab;
 import ui.tabs.EarningsTab;
 import ui.tabs.ExpensesTab;
 
 public class BudgetManagerUI extends JFrame {
 
+    private static final String JSON_STORE = "./data/CurrentAccounts.json";
     public static final int DASHBOARD_TAB_INDEX = 0;
     public static final int EARNINGS_TAB_INDEX = 1;
     public static final int EXPENSES_TAB_INDEX = 2;
@@ -20,6 +23,8 @@ public class BudgetManagerUI extends JFrame {
     public static final int HEIGHT = 400;
     private JTabbedPane sidebar;
     private Account account;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     public static void main(String[] args) {
         new BudgetManagerUI();
@@ -28,6 +33,10 @@ public class BudgetManagerUI extends JFrame {
     // EFFECTS: creates BudgetManager app, loads Account info, displays LoginScreen
     private BudgetManagerUI() {
         super("BudgetManager Console");
+
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
+
         setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,6 +99,18 @@ public class BudgetManagerUI extends JFrame {
         return transaction.getTitle() + "                              " 
         +"$"+ transaction.getAmount()+ "                         " + transaction.getMonth()
         + "/"+transaction.getDay() + "/" +transaction.getYear();
+    }
+
+    public JsonReader getJsonReader() {
+        return this.jsonReader;
+    }
+
+    public JsonWriter getJsonWriter() {
+        return this.jsonWriter;
+    }
+
+    public String getJsonStore() {
+        return this.JSON_STORE;
     }
 
 }
