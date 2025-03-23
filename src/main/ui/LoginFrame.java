@@ -1,5 +1,4 @@
 package ui;
-import java.awt.FlowLayout;
 import java.io.IOException;
 
 import javax.swing.*;
@@ -25,6 +24,7 @@ public class LoginFrame extends JFrame{
 
     public LoginFrame(JsonReader jsonReader, String jsonStore) {
         super("Login Console");
+        loadingScreen();
         this.jsonReader = jsonReader;
         this.jsonStore = jsonStore;
         setSize(600, 300);
@@ -115,6 +115,22 @@ public class LoginFrame extends JFrame{
             stringOutput = new JLabel("Successfully logged in");
             this.add(stringOutput);
         }
+    }
+
+    private void loadingScreen() {
+        JWindow loadScreen = new JWindow();
+        loadScreen.setSize(500, 400);
+        ImageIcon loadIcon = new ImageIcon("data/TheBudgetManager.gif");
+        JLabel loadLabel = new JLabel(loadIcon);
+        loadScreen.getContentPane().add(loadLabel);
+        loadScreen.setVisible(true);
+        try {
+            Thread.sleep(3000); // 3 seconds
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        loadScreen.setVisible(false);
+        loadScreen.dispose();
     }
 
 }
