@@ -45,14 +45,14 @@ public class BudgetManagerUI extends JFrame {
         setVisible(true);
     }
 
-    //updates current account
-    //CODE SOURCE: code learned from online sources
+    // updates current account
+    // CODE SOURCE: code learned from online sources
     public void createAccount() {
         LoginFrame loginFrame = new LoginFrame(jsonReader, JSON_STORE);
         loginFrame.setVisible(true);
         while (loginFrame.getAccount() == null) {
             try {
-                Thread.sleep(100); 
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -61,8 +61,8 @@ public class BudgetManagerUI extends JFrame {
         loginFrame.dispose();
     }
 
-    //MODIFIES: this
-    //EFFECTS: adds Dashboard tab, Earnings tab, and expenses tab to this UI
+    // MODIFIES: this
+    // EFFECTS: adds Dashboard tab, Earnings tab, and expenses tab to this UI
     private void loadTabs() {
         JPanel dashboardTab = new DashboardTab(this);
         JPanel earningsTab = new EarningsTab(this);
@@ -80,14 +80,14 @@ public class BudgetManagerUI extends JFrame {
         return account;
     }
 
-    //EFFECTS: returns sidebar of this UI
+    // EFFECTS: returns sidebar of this UI
     public JTabbedPane getTabbedPane() {
         return sidebar;
     }
 
-     //EFFECTS: returns a String list of transactions and its info
+    // EFFECTS: returns a String list of transactions and its info
     public String stringTransaction(ArrayList<Transaction> listToPrint) {
-        StringBuilder status = new StringBuilder(); 
+        StringBuilder status = new StringBuilder();
         status.append("               TITLE                               AMOUNT                        DATE");
         status.append("\n");
         for (Transaction t : listToPrint) {
@@ -96,11 +96,11 @@ public class BudgetManagerUI extends JFrame {
         return status.toString();
     }
 
-    //EFFECTS: returns a transaction as a string
+    // EFFECTS: returns a transaction as a string
     public String transactionInfo(Transaction transaction) {
-        return transaction.getTitle() + "                              " 
-        +"$"+ transaction.getAmount()+ "                         " + transaction.getMonth()
-        + "/"+transaction.getDay() + "/" +transaction.getYear();
+        return transaction.getTitle() + "                              "
+                + "$" + transaction.getAmount() + "                         " + transaction.getMonth()
+                + "/" + transaction.getDay() + "/" + transaction.getYear();
     }
 
     public JsonReader getJsonReader() {
