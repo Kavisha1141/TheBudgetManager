@@ -117,6 +117,7 @@ public class LoginFrame extends JFrame{
         }
     }
 
+    //EFFECTS: adds a splash screen
     private void loadingScreen() {
         JWindow loadScreen = new JWindow();
         loadScreen.setSize(500, 400);

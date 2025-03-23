@@ -16,6 +16,7 @@ public class ExpensesTab extends TransactionTab {
     }
 
 
+    //EFFECTS: prints all expenses report
     public void printReport() {
         reportText.setText(getController().stringTransaction(getController().getAccount().getListOfExpenses()));
         reportPane.setViewportView(reportText);

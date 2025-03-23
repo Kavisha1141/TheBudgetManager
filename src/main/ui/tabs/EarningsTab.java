@@ -15,11 +15,14 @@ public class EarningsTab extends TransactionTab {
         addTransactionButton.addActionListener(e -> addEarning());
     }
 
+    //EFFECTS: prints expenses with title, amount, and date
     public void printReport() {
         reportText.setText(getController().stringTransaction(getController().getAccount().getListOfEarnings()));
         reportPane.setViewportView(reportText);
     }
 
+
+    //EFFECTS: creates user popup for adding an earning
     public void addEarning() {
         addTransactionPopUp("earning");
     }
