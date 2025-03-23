@@ -118,6 +118,7 @@ public class LoginFrame extends JFrame{
     }
 
     //EFFECTS: adds a splash screen
+    //IMAGE SOURCE: TheBudgetManager.gif uses a component downloaded from https://giphy.com/gifs/JustStartInvesting-cJFQJzZxFMhONxDTnt
     private void loadingScreen() {
         JWindow loadScreen = new JWindow();
         loadScreen.setSize(500, 400);
