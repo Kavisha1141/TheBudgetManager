@@ -4,7 +4,7 @@ import ui.BudgetManagerUI;
 
 public class ExpensesTab extends TransactionTab {
 
-    public ExpensesTab (BudgetManagerUI controller) {
+    public ExpensesTab(BudgetManagerUI controller) {
         super(controller);
         setUpHeading("EXPENSES");
         setUpButtons("expense");
@@ -15,16 +15,15 @@ public class ExpensesTab extends TransactionTab {
         addTransactionButton.addActionListener(e -> addExpense());
     }
 
-
-    //EFFECTS: prints all expenses report
+    // EFFECTS: prints all expenses report
     public void printReport() {
         reportText.setText(getController().stringTransaction(getController().getAccount().getListOfExpenses()));
         reportPane.setViewportView(reportText);
     }
 
-    //EFFECTS: adds expense; if not enough balance, shows popup
+    // EFFECTS: adds expense; if not enough balance, shows popup
     public void addExpense() {
-        if (this.getController().getAccount().getBalance() > 0){
+        if (this.getController().getAccount().getBalance() > 0) {
             addTransactionPopUp("expense");
         } else {
             this.notEnoughBalancePopUp();

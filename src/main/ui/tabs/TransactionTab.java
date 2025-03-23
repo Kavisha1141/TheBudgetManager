@@ -78,7 +78,7 @@ public class TransactionTab extends Tab {
         setUpPopUpFields(typeOfTransaction);
     }
 
-    //EFFECTS: sets up  text fields for popup that appears when adding a transaction
+    // EFFECTS: sets up text fields for popup that appears when adding a transaction
     public void setUpPopUpFields(String typeOfTransaction) {
         JTextField titleField = new JTextField();
         JTextField amountField = new JTextField();
@@ -103,7 +103,8 @@ public class TransactionTab extends Tab {
         dialog.setVisible(true);
     }
 
-    //EFFECTS: adds a transaction to the account; if expense > balance, shows NotEnoughBalance popup
+    // EFFECTS: adds a transaction to the account; if expense > balance, shows
+    // NotEnoughBalance popup
     public void addTransaction(JTextField titleField, JTextField amountField,
             JTextField dayField, JTextField monthField, JTextField yearField, String typeOfTransaction) {
         saveButton.addActionListener(e -> {
@@ -125,16 +126,16 @@ public class TransactionTab extends Tab {
         });
     }
 
-    //EFFECTS: show not enough balance popup
+    // EFFECTS: show not enough balance popup
     public void notEnoughBalancePopUp() {
         JLabel notEnoughBalance = new JLabel("Not enough balance", SwingConstants.CENTER);
         notEnoughBalance.setFont(new Font("Arial", Font.PLAIN, 12));
         notEnoughBalance.setAlignmentX(CENTER_ALIGNMENT);
         JDialog newDialog = new JDialog((Frame) null, "Add Transaction", false);
-        newDialog.setLayout(new GridLayout(1,1));
+        newDialog.setLayout(new GridLayout(1, 1));
         newDialog.add(notEnoughBalance);
         newDialog.setSize(250, 150);
-        newDialog.setLocationRelativeTo(this); 
+        newDialog.setLocationRelativeTo(this);
         newDialog.setVisible(true);
     }
 }
