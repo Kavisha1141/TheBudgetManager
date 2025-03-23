@@ -1,4 +1,5 @@
 package ui;
+
 import java.io.IOException;
 
 import javax.swing.*;
@@ -6,9 +7,8 @@ import java.awt.*;
 import model.Account;
 import persistence.JsonReader;
 
-
 // creates a login frame which takes username password from user and initializes account
-public class LoginFrame extends JFrame{
+public class LoginFrame extends JFrame {
     private Account account;
     private JsonReader jsonReader;
     private JButton createAccountButton;
@@ -20,7 +20,6 @@ public class LoginFrame extends JFrame{
     private JTextField usernameField;
     private JPasswordField passwordField;
     private JLabel stringOutput;
-
 
     public LoginFrame(JsonReader jsonReader, String jsonStore) {
         super("Login Console");
@@ -34,12 +33,12 @@ public class LoginFrame extends JFrame{
         setUpButtons();
     }
 
-    //EFFECTS: sets up buttons of the screen
+    // EFFECTS: sets up buttons of the screen
     public void setUpButtons() {
         JPanel buttonPanel = new JPanel(new FlowLayout());
         createAccountButton = new JButton("Create Account");
         createAccountButton.addActionListener(e -> createAccount());
-        
+
         signInButton = new JButton("Sign in");
         signInButton.addActionListener(e -> login());
 
@@ -51,11 +50,11 @@ public class LoginFrame extends JFrame{
         this.add(buttonPanel);
     }
 
-    //EFFECTS: takes username password text from user 
+    // EFFECTS: takes username password text from user
     public void setUpUsernamePassword() {
         JPanel usernamePanel = new JPanel(new FlowLayout());
-        usernameField = new JTextField(20); 
-        usernameField.setPreferredSize(new Dimension(150, 30)); 
+        usernameField = new JTextField(20);
+        usernameField.setPreferredSize(new Dimension(150, 30));
         usernameField.setSize(100, 50);
 
         usernamePanel.add(new JLabel("Username: "));
@@ -64,36 +63,36 @@ public class LoginFrame extends JFrame{
         JPanel passwordPanel = new JPanel(new FlowLayout());
         passwordField = new JPasswordField(20);
         passwordField.setSize(100, 50);
-        passwordField.setPreferredSize(new Dimension(150, 30)); 
-        
+        passwordField.setPreferredSize(new Dimension(150, 30));
+
         passwordPanel.add(new JLabel("Password: "));
         passwordPanel.add(passwordField);
         this.add(usernamePanel);
         this.add(passwordPanel);
     }
 
-    //EFFECTS: creates account based on user input
+    // EFFECTS: creates account based on user input
     public void createAccount() {
         username = usernameField.getText();
         password = new String(passwordField.getPassword());
         account = new Account(username, password);
     }
 
-    //EFFECTS: reads account from file
+    // EFFECTS: reads account from file
     public void readFromFile() {
         try {
             account = jsonReader.read();
-            stringOutput = new JLabel("Successfully loaded from"+ jsonStore);
+            stringOutput = new JLabel("Successfully loaded from" + jsonStore);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + jsonStore);
         }
     }
 
-    //EFFECTS: opens account using saved username password
+    // EFFECTS: opens account using saved username password
     public Account openAccount() {
         String username = usernameField.getText();
         String password = new String(passwordField.getPassword());
-        if (account!= null) {
+        if (account != null) {
             if (username.equals(account.getName()) && password.equals(account.getPassword())) {
                 return account;
             }
@@ -101,12 +100,12 @@ public class LoginFrame extends JFrame{
         return null;
     }
 
-    //returns account
+    // returns account
     public Account getAccount() {
         return account;
     }
 
-    //EFFECTS: logs in user to account if correct username password entered
+    // EFFECTS: logs in user to account if correct username password entered
     public void login() {
         if (openAccount() == null) {
             stringOutput = new JLabel("Incorrect username or password. Try again");
@@ -117,8 +116,9 @@ public class LoginFrame extends JFrame{
         }
     }
 
-    //EFFECTS: adds a splash screen
-    //IMAGE SOURCE: TheBudgetManager.gif uses a component downloaded from https://giphy.com/gifs/JustStartInvesting-cJFQJzZxFMhONxDTnt
+    // EFFECTS: adds a splash screen
+    // IMAGE SOURCE: TheBudgetManager.gif uses a component downloaded from
+    // https://giphy.com/gifs/JustStartInvesting-cJFQJzZxFMhONxDTnt
     private void loadingScreen() {
         JWindow loadScreen = new JWindow();
         loadScreen.setSize(500, 400);
