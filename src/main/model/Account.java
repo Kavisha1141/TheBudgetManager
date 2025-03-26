@@ -95,6 +95,7 @@ public class Account implements Writable {
         Transaction newExpense = new Transaction(amount, day, month, year, title);
         listOfExpenses.add(newExpense);
         balance -= amount;
+        EventLog.getInstance().logEvent(new Event("New expense added."));
     }
 
     // REQUIRES: day <= 31; month <= 12; year <= current year; day/month/year less;
@@ -107,6 +108,7 @@ public class Account implements Writable {
         Transaction newEarning = new Transaction(amount, day, month, year, title);
         listOfEarnings.add(newEarning);
         balance += amount;
+        EventLog.getInstance().logEvent(new Event("New Earning added."));
     }
 
     // REQUIRES: savings + amount <= target; amount > 0; balance - savings >= 0
@@ -115,6 +117,7 @@ public class Account implements Writable {
     public void saveAmount(int amount) {
         savings += amount;
         balance -= amount;
+        EventLog.getInstance().logEvent(new Event("Amount added to savings."));
     }
 
     // REQUIRES: amount > 0
