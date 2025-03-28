@@ -1,15 +1,30 @@
 {
-    "Account name": "kavisha",
-    "List of Earnings": [{
-        "amount": 500,
-        "month": 1,
-        "year": 2025,
-        "title": "received paycheck",
-        "day": 12
-    }],
+    "Account name": "kpatel47",
+    "List of Earnings": [
+        {
+            "amount": 1500,
+            "month": 3,
+            "year": 2025,
+            "title": "earned paycheck",
+            "day": 13
+        },
+        {
+            "amount": 1250,
+            "month": 3,
+            "year": 2025,
+            "title": "BC scholarship",
+            "day": 23
+        }
+    ],
     "Account password": "1141",
-    "Amount saved": 50,
-    "List of Expenses": [],
+    "Amount saved": 500,
+    "List of Expenses": [{
+        "amount": 10,
+        "month": 3,
+        "year": 2025,
+        "title": "rain or shine ",
+        "day": 25
+    }],
     "Savings target": 0,
-    "Balance": 450
+    "Balance": 2240
 }

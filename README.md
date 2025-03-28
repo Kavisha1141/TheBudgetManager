@@ -30,3 +30,18 @@ expenses, and saving goals.
 - You can locate my visual component by the splashscreen before the app launches and the progress bar in the dashboard
 - You can save the state of my application by pressing the save info to file button in dashboard
 - You can reload the state of my application by pressing the load from file button in the login console
+
+*Phase 4: Task2*:
+A representative sample of log entries:
+
+Fri Mar 28 12:43:01 PDT 2025
+New Earning added.
+
+Fri Mar 28 12:43:39 PDT 2025
+New Earning added.
+
+Fri Mar 28 12:44:09 PDT 2025
+New expense added.
+
+Fri Mar 28 12:44:14 PDT 2025
+Amount added to savings.
