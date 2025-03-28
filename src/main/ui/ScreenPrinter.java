@@ -5,6 +5,7 @@ import java.awt.Component;
 import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.WindowConstants;
 
 import model.Event;
 import model.EventLog;
@@ -31,7 +32,8 @@ public class ScreenPrinter extends JInternalFrame implements LogPrinter {
 		setSize(WIDTH, HEIGHT);
 		setPosition(parent);
 		setVisible(true);
-	}
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    }
 	
 	@Override
 	public void printLog(EventLog el) {

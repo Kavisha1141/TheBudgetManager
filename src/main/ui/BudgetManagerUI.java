@@ -1,9 +1,11 @@
 package ui;
 
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.*;
 
 import model.Account;
+import model.EventLog;
 import model.Transaction;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -25,6 +27,7 @@ public class BudgetManagerUI extends JFrame {
     private Account account;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
+    private ScreenPrinter screenPrinter;
 
     public static void main(String[] args) {
         new BudgetManagerUI();
@@ -36,13 +39,30 @@ public class BudgetManagerUI extends JFrame {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
         setSize(WIDTH, HEIGHT);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         sidebar = new JTabbedPane();
         sidebar.setTabPlacement(JTabbedPane.LEFT);
         createAccount();
         loadTabs();
         add(sidebar);
         setVisible(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                printLogBeforeClosing();
+            }
+        });
+    }
+
+    //EFFECTS: prints log before closing
+    public void printLogBeforeClosing() {
+        JFrame screenPrinterWindow = new JFrame("Screen Printer");
+        screenPrinterWindow.setSize(400, 300); 
+        screenPrinterWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
+        screenPrinter = new ScreenPrinter(this);
+        screenPrinterWindow.add(screenPrinter);
+        screenPrinter.printLog(EventLog.getInstance());
+        screenPrinterWindow.setVisible(true);
     }
 
     // updates current account
