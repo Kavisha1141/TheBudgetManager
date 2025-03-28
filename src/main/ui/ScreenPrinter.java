@@ -1,11 +1,12 @@
 package ui;
 
 import java.awt.Component;
+import java.awt.Dimension;
 
-import javax.swing.JInternalFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.WindowConstants;
+import java.awt.*;
 
 import model.Event;
 import model.EventLog;
@@ -14,7 +15,7 @@ import model.EventLog;
  * Represents a screen printer for printing event log to screen.
  */
 // CODE SOURCE: AlarmSystem: https://github.students.cs.ubc.ca/CPSC210/AlarmSystem   
-public class ScreenPrinter extends JInternalFrame implements LogPrinter {
+public class ScreenPrinter extends JPanel implements LogPrinter {
 	private static final int WIDTH = 400;
 	private static final int HEIGHT = 300;
 	private JTextArea logArea;
@@ -24,15 +25,16 @@ public class ScreenPrinter extends JInternalFrame implements LogPrinter {
 	 * @param parent  the parent component
 	 */
 	public ScreenPrinter(Component parent) {
-		super("Event log", false, true, false, false);
+        setLayout(new BorderLayout());
 		logArea = new JTextArea();
 		logArea.setEditable(false);
 		JScrollPane scrollPane = new JScrollPane(logArea);
+        logArea.setSize(new Dimension(WIDTH, HEIGHT));
+        scrollPane.setSize(new Dimension(WIDTH, HEIGHT));
 		add(scrollPane);
 		setSize(WIDTH, HEIGHT);
 		setPosition(parent);
 		setVisible(true);
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
 	
 	@Override

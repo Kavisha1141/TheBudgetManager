@@ -4,6 +4,8 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.*;
 
+
+
 import model.Account;
 import model.EventLog;
 import model.Transaction;
@@ -62,6 +64,7 @@ public class BudgetManagerUI extends JFrame {
         screenPrinter = new ScreenPrinter(this);
         screenPrinterWindow.add(screenPrinter);
         screenPrinter.printLog(EventLog.getInstance());
+        screenPrinter.setVisible(true);
         screenPrinterWindow.setVisible(true);
     }
 
