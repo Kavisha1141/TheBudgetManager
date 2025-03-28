@@ -4,8 +4,6 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.*;
 
-
-
 import model.Account;
 import model.EventLog;
 import model.Transaction;
@@ -56,11 +54,11 @@ public class BudgetManagerUI extends JFrame {
         });
     }
 
-    //EFFECTS: prints log before closing
+    // EFFECTS: prints log before closing
     public void printLogBeforeClosing() {
         JFrame screenPrinterWindow = new JFrame("Screen Printer");
-        screenPrinterWindow.setSize(400, 300); 
-        screenPrinterWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
+        screenPrinterWindow.setSize(400, 300);
+        screenPrinterWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         screenPrinter = new ScreenPrinter(this);
         screenPrinterWindow.add(screenPrinter);
         screenPrinter.printLog(EventLog.getInstance());
@@ -69,7 +67,6 @@ public class BudgetManagerUI extends JFrame {
     }
 
     // updates current account
-    // CODE SOURCE: code learned from online sources
     public void createAccount() {
         LoginFrame loginFrame = new LoginFrame(jsonReader, JSON_STORE);
         loginFrame.setVisible(true);
