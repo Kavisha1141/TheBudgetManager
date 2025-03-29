@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Represents an Account activity event
+ * Represents an account activity event.
  */
 public class Event {
     private static final int HASH_CONSTANT = 13;
@@ -45,7 +45,7 @@ public class Event {
         if (other == null)
             return false;
 
-        if (other.getClass() != this.getClass())
+        if (other.getClass() != this.getClass()) 
             return false;
 
         Event otherEvent = (Event) other;
