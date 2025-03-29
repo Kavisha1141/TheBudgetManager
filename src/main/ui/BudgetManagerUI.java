@@ -56,6 +56,7 @@ public class BudgetManagerUI extends JFrame {
 
     // EFFECTS: prints log before closing
     public void printLogBeforeClosing() {
+        
         JFrame screenPrinterWindow = new JFrame("Screen Printer");
         screenPrinterWindow.setSize(400, 300);
         screenPrinterWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

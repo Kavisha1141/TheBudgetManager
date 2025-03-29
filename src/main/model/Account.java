@@ -18,6 +18,7 @@ public class Account implements Writable {
     private ArrayList<Transaction> listOfExpenses;
     private int savings;
     private int savingsTarget;
+    private EventLog eventLog;
 
     // constructs an account with name, balance and savings set to 0 and empty list
     // of earnings, and
@@ -30,6 +31,7 @@ public class Account implements Writable {
         savings = 0;
         savingsTarget = 0;
         this.name = name;
+        eventLog = EventLog.getInstance();
     }
 
     public String getPassword() {
@@ -95,7 +97,7 @@ public class Account implements Writable {
         Transaction newExpense = new Transaction(amount, day, month, year, title);
         listOfExpenses.add(newExpense);
         balance -= amount;
-        EventLog.getInstance().logEvent(new Event("New expense added."));
+        eventLog.logEvent(new Event("New expense added."));
     }
 
     // REQUIRES: day <= 31; month <= 12; year <= current year; day/month/year less;
@@ -108,7 +110,7 @@ public class Account implements Writable {
         Transaction newEarning = new Transaction(amount, day, month, year, title);
         listOfEarnings.add(newEarning);
         balance += amount;
-        EventLog.getInstance().logEvent(new Event("New Earning added."));
+        eventLog.logEvent(new Event("New Earning added."));
     }
 
     // REQUIRES: savings + amount <= target; amount > 0; balance - savings >= 0
@@ -117,7 +119,7 @@ public class Account implements Writable {
     public void saveAmount(int amount) {
         savings += amount;
         balance -= amount;
-        EventLog.getInstance().logEvent(new Event("Amount added to savings."));
+        eventLog.logEvent(new Event("Amount added to savings."));
     }
 
     // REQUIRES: amount > 0
