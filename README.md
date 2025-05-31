@@ -13,6 +13,10 @@ In this learning process, technology can be a powerful tool. Because of this rea
 I came up with Budget Manager. Through Budget Manager, students can keep track of their income, 
 expenses, and saving goals.  
 
+*💻 Tech Stack / Technologies Used:*
+- Java – Core programming language used for logic and application flow
+- Swing (Java Swing) – GUI framework used for building the desktop user interface
+- JSON – Used for storing and reading user data (expenses, categories, etc.)
 
 *The Budget Manager* User Stories:
 - I want to be able to add my **income, expenses and savings**
