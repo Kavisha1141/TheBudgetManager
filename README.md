@@ -17,6 +17,15 @@ expenses, and saving goals.
 - Java – Core programming language used for logic and application flow
 - Swing (Java Swing) – GUI framework used for building the desktop user interface
 - JSON – Used for storing and reading user data (expenses, categories, etc.)
+- JUnit for testing
+
+*Testing*:
+The core budgeting logic in this project has been tested to ensure it functions correctly and reliably. 
+Testing includes:
+- Manual testing: Verified key functionalities such as income allocation, expense tracking, and balance calculations through multiple test scenarios to ensure expected behavior.
+- Automated testing
+- Unit tests are written using JUnit to validate individual methods and classes.
+This testing ensures that the budget manager performs accurate financial calculations and handles user inputs correctly.
 
 *The Budget Manager* User Stories:
 - I want to be able to add my **income, expenses and savings**
